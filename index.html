@@ -44,51 +44,72 @@
     </div> <!-- Closes the main flexbox wrapper container -->
 
     <!-- JAVASCRIPT: Placed safely at the bottom to control animation playback and visibility rules -->
-    <script>
-        // Forces the code to wait until the entire page layout safely loads inside the browser
-        document.addEventListener("DOMContentLoaded", function() {
+
+        
+
+
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() { 
+        
+        // Initialize the Lottie animation engine
+        const iconContainer = document.getElementById('lottie-icon'); 
+        const animation = lottie.loadAnimation({ 
+            container: iconContainer, 
+            renderer: 'svg',          
+            loop: false,              
+            autoplay: false,          
+            path: 'icons8-menu.json'  
+        }); 
+
+        // Grab layout elements to trigger the collapse animation frames
+        const toggleButton = document.getElementById('menuToggle'); 
+        const dropdownMenu = document.getElementById('seasons'); 
+        const sidebar = document.querySelector('.left-sidebar'); 
+        let isOpen = false; 
+
+        // Handle the button clicks to toggle the side menu frame size
+        toggleButton.addEventListener('click', (event) => { 
+            event.stopPropagation(); 
+            isOpen = !isOpen; 
             
-            // 1. INITIALIZE THE LOTTIE ANIMATION
-            const iconContainer = document.getElementById('lottie-icon');
-            const animation = lottie.loadAnimation({
-                container: iconContainer, // Points directly to the div block above
-                renderer: 'svg',          // Renders the JSON vector data cleanly as high-quality web vectors
-                loop: false,              // Prevents the icon from looping infinitely on loop cycles
-                autoplay: false,          // Stops the icon from automatically playing immediately when the page loads
-                path: 'icons8-menu.json'  // The exact name/path of the JSON icon file in your VS Code folder
-            });
+            if (isOpen) { 
+                dropdownMenu.classList.add('show'); 
+                sidebar.classList.remove('collapsed'); // Expands the sidebar width
+                animation.setDirection(1);  
+                animation.play();           
+            } else { 
+                dropdownMenu.classList.remove('show'); 
+                sidebar.classList.add('collapsed'); // Collapses the sidebar container width
+                animation.setDirection(-1); 
+                animation.play();           
+            } 
+        }); 
 
-            // 2. TOGGLE DROPDOWN & ANIMATION CLICK LOGIC
-            const toggleButton = document.getElementById('menuToggle');
-            const dropdownMenu = document.getElementById('seasons');
-            let isOpen = false; // Internal tracking flag to remember if the menu panel is opened or shut
+        // Closes everything if you click anywhere else on the blank stars background
+        document.addEventListener('click', () => { 
+            dropdownMenu.classList.remove('show'); 
+            sidebar.classList.add('collapsed'); 
+            if(isOpen) { 
+                animation.setDirection(-1); 
+                animation.play(); 
+                isOpen = false; 
+            } 
+        }); 
+    });
+</script>
 
-            toggleButton.addEventListener('click', (event) => {
-                dropdownMenu.classList.toggle('show'); // Toggles the visibility class 'show' on the dropdown select element
-                event.stopPropagation(); // Stops mouse clicks from instantly firing closing triggers on the body map
-                
-                isOpen = !isOpen; // Flips the state flag value
-                
-                if (isOpen) {
-                    animation.setDirection(1);  // Sets the playback movement forward
-                    animation.play();           // Plays the animation (e.g., morphing from lines to an X if supported)
-                } else {
-                    animation.setDirection(-1); // Rewinds the playback movement backward
-                    animation.play();           // Plays the animation backward back into its basic state
-                }
-            });
 
-            // 3. GLOBAL CLICK BACK-UP
-            document.addEventListener('click', () => {
-                dropdownMenu.classList.remove('show'); // Snaps the menu shut if a user clicks outside the sidebar
-                if(isOpen) {
-                    animation.setDirection(-1); // Rewinds the menu icon back down safely
-                    animation.play();
-                    isOpen = false;
-                }
-            });
-        });
-    </script>
+
+
+
+
+
+
+
 </body>
 </html>
  
