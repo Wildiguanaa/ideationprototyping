@@ -1,76 +1,92 @@
-<!-- <html>
-    <body>
-        <a href="fall2026.html">Fall 2026</a>
-        <a href="summer2026.html">Fall 2026</a>
-    </body>
-</html> -->
-
 <!DOCTYPE html> <!-- Tells the web browser that this file is written in modern HTML5 -->
 <html lang="en"> <!-- Starts the webpage document and sets the primary language to English -->
 <head> <!-- Opens the hidden settings area for metadata, page titles, and linked files -->
     <meta charset="UTF-8"> <!-- Sets universal character encoding so text displays without glitches -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures the website fits and scales correctly on mobile devices -->
     <title>Ideation & Prototyping</title> <!-- Defines the title text displayed on the browser tab -->
-    <link rel="stylesheet" href="https://cloudflare.com">
     <link rel="stylesheet" href="style.css"> <!-- Links the external CSS stylesheet file to this HTML document -->
+    
+    <!-- LOTTIE PLAYER SCRIPT: Loads the specialized engine required to render your JSON animation file -->
+    <script src="https://cloudflare.com"></script>
 </head> <!-- Closes the hidden settings section of the webpage -->
 <body> <!-- Opens the visible body section where all website content goes -->
 
-
-
-<!-- TOP TITLE HEADER -->
+    <!-- TOP TITLE HEADER -->
     <header class="top-header"> <!-- Container for the top section of the website -->
-        <h1 class="main-title">Ideation & Prototyping</h1>
+        <h1 class="main-title">Ideation & Prototyping</h1> <!-- Main header text layout -->
     </header> <!-- Closes the top section -->
 
-
-      <!-- YOUR LINKS GO HERE (Inside the body tags) -->
-    <!-- <a href="fall2026.html">Fall 2026</a> <!-- Creates a link pointing to the Fall 2026 page -->
-    <!-- <a href="summer2026.html">Summer 2026</a> Creates a link pointing to the Summer 2026 page --> -->
-
-<!-- </body> Closes the visible content section of the webpage -->
-<!-- </html> Marks the absolute end of the HTML document structure -->
-
-
-
-
-
-    <!-- MAIN CONTENT AREA -->
-    <div class="main-container">
+    <!-- MAIN CONTENT AREA WRAPPER -->
+    <div class="main-container"> <!-- Flexbox container that aligns the sidebar and content window side-by-side -->
 
         <!-- LEFT SIDEBAR -->
-        <aside class="left-sidebar">
+        <aside class="left-sidebar"> <!-- Defines a sidebar section on the left page layout -->
             
-            <!-- 2. REPLACE THE OLD LABEL WITH THIS BUTTON AND ICON -->
+            <!-- Clickable housing button container for your animated JSON icon asset -->
             <button class="menu-toggle-btn" id="menuToggle" title="Toggle Menu">
-                <i class="fa-solid fa-bars"></i> <!-- The actual menu bars icon -->
+                <!-- An empty container tag where the Lottie engine will draw your JSON animation -->
+                <div id="lottie-icon"></div> 
             </button>
 
-            <!-- 3. DROPDOWN BOX (Initially hidden by CSS until clicked) -->
-            <select name="seasons" id="seasons" class="dropdown-menu" onchange="location = this.value;">
-                <option value="">-- Select Options --</option>
-                <option value="fall2026.html">Fall 2026</option>
-                <option value="summer2026.html">Summer 2026</option>
-            </select>
-        </aside>
+            <!-- DROPDOWN BOX (Initially hidden by CSS until clicked) -->
+            <select name="seasons" id="seasons" class="dropdown-menu" onchange="if(this.value) location = this.value;">
+                <option value="">-- Select Options --</option> <!-- Default placeholder dropdown instruction -->
+                <option value="fall2026.html">Fall 2026</option> <!-- Dropdown option pointing to your Fall file -->
+                <option value="summer2026.html">Summer 2026</option> <!-- Dropdown option pointing to your Summer file -->
+            </select> <!-- Closes the dropdown menu element -->
+        </aside> <!-- Closes the left sidebar section -->
 
         <!-- RIGHT CONTENT WINDOW -->
-        <main class="content-area">
-            <p>Welcome! Your page text or graphics go right here.</p>
-        </main>
+        <main class="content-area"> <!-- Defines the primary unique content section of the page -->
+            <p>Welcome! Your page text or graphics go right here.</p> <!-- Placeholder body text -->
+        </main> <!-- Closes the primary content area -->
 
-    </div>
+    </div> <!-- Closes the main flexbox wrapper container -->
 
-    <!-- 4. ADD THIS JAVASCRIPT: Handles the click logic to show/hide the dropdown -->
+    <!-- JAVASCRIPT: Placed safely at the bottom to control animation playback and visibility rules -->
     <script>
-        // Finds the button and the dropdown list in your HTML
-        const toggleButton = document.getElementById('menuToggle');
-        const dropdownMenu = document.getElementById('seasons');
+        // Forces the code to wait until the entire page layout safely loads inside the browser
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. INITIALIZE THE LOTTIE ANIMATION
+            const iconContainer = document.getElementById('lottie-icon');
+            const animation = lottie.loadAnimation({
+                container: iconContainer, // Points directly to the div block above
+                renderer: 'svg',          // Renders the JSON vector data cleanly as high-quality web vectors
+                loop: false,              // Prevents the icon from looping infinitely on loop cycles
+                autoplay: false,          // Stops the icon from automatically playing immediately when the page loads
+                path: 'icons8-menu.json'  // The exact name/path of the JSON icon file in your VS Code folder
+            });
 
-        // Listens for a click on the icon button
-        toggleButton.addEventListener('click', () => {
-            // Toggles the custom visibility class 'show' on the dropdown element
-            dropdownMenu.classList.toggle('show');
+            // 2. TOGGLE DROPDOWN & ANIMATION CLICK LOGIC
+            const toggleButton = document.getElementById('menuToggle');
+            const dropdownMenu = document.getElementById('seasons');
+            let isOpen = false; // Internal tracking flag to remember if the menu panel is opened or shut
+
+            toggleButton.addEventListener('click', (event) => {
+                dropdownMenu.classList.toggle('show'); // Toggles the visibility class 'show' on the dropdown select element
+                event.stopPropagation(); // Stops mouse clicks from instantly firing closing triggers on the body map
+                
+                isOpen = !isOpen; // Flips the state flag value
+                
+                if (isOpen) {
+                    animation.setDirection(1);  // Sets the playback movement forward
+                    animation.play();           // Plays the animation (e.g., morphing from lines to an X if supported)
+                } else {
+                    animation.setDirection(-1); // Rewinds the playback movement backward
+                    animation.play();           // Plays the animation backward back into its basic state
+                }
+            });
+
+            // 3. GLOBAL CLICK BACK-UP
+            document.addEventListener('click', () => {
+                dropdownMenu.classList.remove('show'); // Snaps the menu shut if a user clicks outside the sidebar
+                if(isOpen) {
+                    animation.setDirection(-1); // Rewinds the menu icon back down safely
+                    animation.play();
+                    isOpen = false;
+                }
+            });
         });
     </script>
 </body>
