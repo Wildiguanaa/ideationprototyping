@@ -94,3 +94,4 @@ body { /* Selects the entire body element to apply styles to the whole page */
     padding: 30px; /* Generates boundary buffering spaces around text fields and graphics columns */
     color: white; /* Forces plain text fallbacks inside main windows to display using standard white text */
 }
+ 
