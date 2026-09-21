@@ -33,6 +33,7 @@ body { /* Selects the entire body element to apply styles to the whole page */
     position: relative; /* Setup absolute coordinate reference point map metrics for target child items */
 }
 
+
 /* LEFT SIDEBAR BAR PANELS STYLES */
 .left-sidebar {
     width: 80px; /* Constrains column block layout width measurements inside a controlled menu grid */
@@ -43,7 +44,23 @@ body { /* Selects the entire body element to apply styles to the whole page */
     flex-direction: column; /* Organizes nested elements in top-to-bottom configurations */
     align-items: center; /* Center links and icons horizontally inside the sidebar channel space */
     gap: 15px; /* Manages the distance room values between your toggle buttons and menu layers */
+    
+    /* Change: Enables smooth sliding collapsible animation states */
+    transition: width 0.3s ease, padding 0.3s ease; 
+    overflow: hidden; /* Prevents text or drop boxes from spilling out while shrinking */
+    white-space: nowrap; /* Forces elements to stay in line during animations */
 }
+
+/* New Rule: This class will be applied by JS to shrink the sidebar */
+.left-sidebar.collapsed {
+    width: 0px; /* Collapses the sidebar width entirely to zero */
+    padding-left: 0px; /* Removes inner left padding spacing constraints */
+    padding-right: 0px; /* Removes inner right padding spacing constraints */
+    border: none; /* Strips any outer border frameworks while collapsed */
+}
+
+
+
 
 /* THE BUTTON ELEMENT HOUSING THE ANIMATION */
 .menu-toggle-btn {
