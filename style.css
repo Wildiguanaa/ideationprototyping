@@ -2,7 +2,7 @@ body { /* Selects the entire body element to apply styles to the whole page */
     margin: 0; /* Removes the browser's default outer white border margins around the screen edge */
     padding: 0; /* Removes the browser's default inner spacing inside the main body container */
     min-height: 100vh; /* Forces the body to span at least 100% of the screen's visible height */
-    background-image: url('stars.png'); /* Tells the browser exactly which image file to use for the background */
+    background-image: url('stars1.png'); /* Tells the browser exactly which image file to use for the background */
     background-size: cover; /* Automatically scales the image up or down to fill the screen without stretching */
     background-position: center; /* Locks the exact center of the picture to the center of the viewport screen */
     background-repeat: no-repeat; /* Prevents the image from duplicating/tiling itself on larger desktop monitors */
@@ -21,7 +21,7 @@ body { /* Selects the entire body element to apply styles to the whole page */
 }
 
 .main-title {
-    color: #ff007f; /* YOUR UPDATED TITLE COLOR (Neon Pink/Magenta) */
+    color: #e5e4df; /* Sets your custom theme color for the heading layout font */
     margin: 0; /* Drops native top margins away so the title banner locks tight to the browser rim */
     font-size: 2.5rem; /* Scales font thickness size up cleanly across systems */
 }
@@ -45,46 +45,27 @@ body { /* Selects the entire body element to apply styles to the whole page */
     gap: 15px; /* Manages the distance room values between your toggle buttons and menu layers */
 }
 
-/* THE BUTTON STRUCTURE HOUSING THE PURE CSS LINES */
+/* THE BUTTON ELEMENT HOUSING THE ANIMATION */
 .menu-toggle-btn {
     background: none; /* Strips standard input button backgrounds completely transparent */
     border: none; /* Clears solid box frame outline margins off the layout border rules */
     cursor: pointer; /* Modifies default cursor pointers to show an index selection hand variant on hover */
-    width: 40px; /* Width constraints for the button layout canvas */
-    height: 30px; /* Height constraints for the button layout canvas */
-    display: flex; /* Enables flexible internal layout tools */
-    flex-direction: column; /* Chains internal elements stacked vertically */
-    justify-content: space-between; /* Evenly spaces the three bars inside our button bounds */
-    padding: 0; /* Removes default button buffers */
+    padding: 0; /* Drops outer bounding margins down inside the interaction space */
+    width: 50px; /* Locks custom boundary constraints for layout dimensions */
+    height: 50px; /* Forces height aspect matches for uniform square boundaries */
     outline: none; /* Erases harsh focus highlight ring visuals across active click cycles */
 }
 
-/* BASE CORE FOR EACH INDIVIDUAL SPAN BAR LINE */
-.bar {
-    width: 100%; /* Spans across the full horizontal container space of the button */
-    height: 4px; /* Thickness layout height for the individual lines */
-    background-color: white; /* Color of your custom navigation hamburger lines */
-    border-radius: 2px; /* Softly curves the points of the lines */
-    transition: all 0.3s ease; /* Applies a smooth animation timing frame for all state shifting properties */
+/* SPECIFIC WRAPPER ENFORCING INTERACTION SCALING OVER TARGET JSON DATA */
+#lottie-icon {
+    width: 100%; /* Forces SVG data images to naturally inherit container widths */
+    height: 100%; /* Scales vector file structures fully inside structural frames */
+    transition: transform 0.2s ease; /* Seamlessly animations transformation metrics across hover actions */
 }
 
-/* ==========================================================================
-   THE MORPHING CSS ANIMATION CODES
-   ========================================================================== */
-
-/* 1. Rotates the top bar diagonally downwards when clicked */
-.menu-toggle-btn.open .line-1 {
-    transform: translateY(13px) rotate(45deg);
-}
-
-/* 2. Completely vanishes the center line when clicked */
-.menu-toggle-btn.open .line-2 {
-    opacity: 0;
-}
-
-/* 3. Rotates the bottom bar diagonally upwards when clicked to complete the 'X' */
-.menu-toggle-btn.open .line-3 {
-    transform: translateY(-13px) rotate(-45deg);
+/* Adds soft layout scale adjustments when mouse cursors pass over the animated icon window */
+.menu-toggle-btn:hover #lottie-icon {
+    transform: scale(1.15); /* Zooms graphic file dimensions slightly to flag active button components */
 }
 
 /* DROPDOWN OPTIONS LIST ELEMENT STYLES */
@@ -102,9 +83,9 @@ body { /* Selects the entire body element to apply styles to the whole page */
     z-index: 1000; /* Sets stack layout priorities high so dropdowns remain visible over body items */
 }
 
-/* TARGET LAYOUT RULE DYNAMICALLY VISIBLE BY CLICKING DROPDOWN */
+/* TARGET LAYOUT RULE APPLIED DYNAMICALLY VIA JAVASCRIPT HANDLERS */
 .dropdown-menu.show {
-    display: block; 
+    display: block; /* Flags visibility rules to active so layout boxes appear when users click the icon button */
 }
 
 /* RIGHT MAIN BODY CONTAINER INTERIOR PANEL STYLES */
@@ -113,3 +94,4 @@ body { /* Selects the entire body element to apply styles to the whole page */
     padding: 30px; /* Generates boundary buffering spaces around text fields and graphics columns */
     color: white; /* Forces plain text fallbacks inside main windows to display using standard white text */
 }
+ 
