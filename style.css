@@ -1,0 +1,10 @@
+body { /* Selects the entire body element to apply styles to the whole page */
+    margin: 0; /* Removes the browser's default outer white border margins around the screen edge */
+    padding: 0; /* Removes the browser's default inner spacing inside the main body container */
+    min-height: 100vh; /* Forces the body to span at least 100% of the screen's visible height */
+    background-image: url('stars.png'); /* Tells the browser exactly which image file to use for the background */
+    background-size: cover; /* Automatically scales the image up or down to fill the screen without stretching */
+    background-position: center; /* Locks the exact center of the picture to the center of the viewport screen */
+    background-repeat: no-repeat; /* Prevents the image from duplicating/tiling itself on larger desktop monitors */
+    background-attachment: fixed; /* Freezes the image completely in place so content scrolls on top of it */
+} /* Closes the styles rule block for the body element */
