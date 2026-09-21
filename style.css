@@ -21,7 +21,7 @@ body { /* Selects the entire body element to apply styles to the whole page */
 }
 
 .main-title {
-    color: #ffcc00; /* Sets your custom theme color for the heading layout font */
+    color: #e5e4df; /* Sets your custom theme color for the heading layout font */
     margin: 0; /* Drops native top margins away so the title banner locks tight to the browser rim */
     font-size: 2.5rem; /* Scales font thickness size up cleanly across systems */
 }
