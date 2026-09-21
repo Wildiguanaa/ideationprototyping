@@ -7,58 +7,90 @@ body { /* Selects the entire body element to apply styles to the whole page */
     background-position: center; /* Locks the exact center of the picture to the center of the viewport screen */
     background-repeat: no-repeat; /* Prevents the image from duplicating/tiling itself on larger desktop monitors */
     background-attachment: fixed; /* Freezes the image completely in place so content scrolls on top of it */
+    font-family: Arial, sans-serif; /* Updates text elements with clean modern styling formatting */
+    display: flex; /* Activates layout flex tools to stack elements across coordinates */
+    flex-direction: column; /* Vertically orders components layout grids down the screen */
 } /* Closes the styles rule block for the body element */
 
-/* ... Keep your existing body, top-header, and main-container code the same ... */
+/* TOP TITLE HEADER STYLES */
+.top-header {
+    width: 100%; /* Spans across the entire horizontal width layout of the viewport frame */
+    background: rgba(0, 0, 0, 0.6); /* Adds a 60% translucent black layout background layer under your title */
+    text-align: center; /* Horizontally centers heading text alignment lines inside the banner wrapper */
+    padding: 20px 0; /* Provides padding breathing room values over and below heading text blocks */
+}
 
-/* LEFT SIDEBAR STYLES */
+.main-title {
+    color: #ffcc00; /* Sets your custom theme color for the heading layout font */
+    margin: 0; /* Drops native top margins away so the title banner locks tight to the browser rim */
+    font-size: 2.5rem; /* Scales font thickness size up cleanly across systems */
+}
+
+/* INTERIOR CONTENT WRAPPER LAYOUT SETUP */
+.main-container {
+    display: flex; /* Forces items nested inside to snap perfectly into side-by-side positioning rows */
+    flex: 1; /* Instructs layout container bounds to dynamically consume all remaining lower page screen space */
+    position: relative; /* Setup absolute coordinate reference point map metrics for target child items */
+}
+
+/* LEFT SIDEBAR BAR PANELS STYLES */
 .left-sidebar {
-    width: 80px; /* Shrunk the layout width down since it only holds a neat icon button now */
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(5px);
-    padding: 20px 10px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers the icon button horizontally inside the column bar */
-    gap: 15px; /* Adds space between the button and the dropdown menu beneath it */
+    width: 80px; /* Constrains column block layout width measurements inside a controlled menu grid */
+    background: rgba(255, 255, 255, 0.15); /* Soft glowing white overlay profile filter transparency layer tint */
+    backdrop-filter: blur(5px); /* Smoothly blurs your stars image asset layers floating behind this sidebar lane */
+    padding: 20px 10px; /* Creates inner cursor workspace limits along layout edge bounds */
+    display: flex; /* Uses standard alignment models inside container blocks */
+    flex-direction: column; /* Organizes nested elements in top-to-bottom configurations */
+    align-items: center; /* Center links and icons horizontally inside the sidebar channel space */
+    gap: 15px; /* Manages the distance room values between your toggle buttons and menu layers */
 }
 
-/* THE ICON BUTTON STYLES */
+/* THE BUTTON ELEMENT HOUSING THE ANIMATION */
 .menu-toggle-btn {
-    background: none; /* Strips the default button color away */
-    border: none; /* Removes the default box frame outline border */
-    color: white; /* Makes the font awesome icon white */
-    font-size: 24px; /* Increases the sizing profile of the icon image */
-    cursor: pointer; /* Changes your system mouse cursor to a clicking hand on hover */
-    transition: transform 0.2s ease; /* Adds smooth transition timing animation for mouse hover actions */
+    background: none; /* Strips standard input button backgrounds completely transparent */
+    border: none; /* Clears solid box frame outline margins off the layout border rules */
+    cursor: pointer; /* Modifies default cursor pointers to show an index selection hand variant on hover */
+    padding: 0; /* Drops outer bounding margins down inside the interaction space */
+    width: 50px; /* Locks custom boundary constraints for layout dimensions */
+    height: 50px; /* Forces height aspect matches for uniform square boundaries */
+    outline: none; /* Erases harsh focus highlight ring visuals across active click cycles */
 }
 
-/* Smooth zoom effect when hovering over the menu icon */
-.menu-toggle-btn:hover {
-    transform: scale(1.1); /* Scales up the size of the icon slightly on user hover states */
+/* SPECIFIC WRAPPER ENFORCING INTERACTION SCALING OVER TARGET JSON DATA */
+#lottie-icon {
+    width: 100%; /* Forces SVG data images to naturally inherit container widths */
+    height: 100%; /* Scales vector file structures fully inside structural frames */
+    transition: transform 0.2s ease; /* Seamlessly animations transformation metrics across hover actions */
 }
 
-/* THE DROPDOWN SELECT BOX STYLES */
+/* Adds soft layout scale adjustments when mouse cursors pass over the animated icon window */
+.menu-toggle-btn:hover #lottie-icon {
+    transform: scale(1.15); /* Zooms graphic file dimensions slightly to flag active button components */
+}
+
+/* DROPDOWN OPTIONS LIST ELEMENT STYLES */
 .dropdown-menu {
-    display: none; /* CORE BEHAVIOR: Conceals the dropdown box from view by default layout rules */
-    width: 140px; /* Gives the dropdown target selector width room for option text entries */
-    padding: 8px; /* Adds comfortable cursor click target space padding inside the selector box */
-    border-radius: 4px; /* Slightly curves the harsh corner points of the selector container elements */
-    background: white; /* Gives the dropdown options panel element background filling color */
-    border: 1px solid #ccc; /* Applies a clean framework design color outline map around the border */
-    position: absolute; /* Frees layout placement rules to hang out without skewing standard column rows */
-    top: 70px; /* Positions the menu right beneath your floating toggle option icon trigger */
+    display: none; /* CORE: conceals select layout dropdown elements from view parameters natively */
+    position: absolute; /* Frees block items to float over content structures without warping surrounding items */
+    left: 90px; /* Offsets menu items precisely to the right side edge boundary lines of your sidebar layout */
+    top: 20px; /* Sets vertical drops mapping metrics down from upper sidebar bounds */
+    width: 150px; /* Sets layout display room metrics for reading option strings */
+    padding: 8px; /* Appends buffer padding interior layouts inside option selection spaces */
+    border-radius: 4px; /* Smooths the perimeter bounds coordinates of the choice list boxes */
+    background: white; /* Applies high contrast paper color background grids to selection rows */
+    border: 1px solid #ccc; /* Maps frame border color details directly onto outline perimeters */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* Draws dark depth visual dimensions directly below popup items */
+    z-index: 1000; /* Sets stack layout priorities high so dropdowns remain visible over body items */
 }
 
-/* THE TRIGGER CLASS CONTROLLED BY JAVASCRIPT */
+/* TARGET LAYOUT RULE APPLIED DYNAMICALLY VIA JAVASCRIPT HANDLERS */
 .dropdown-menu.show {
-    display: block; /* Overrides the default hidden layout state to reveal the dropdown items visually */
+    display: block; /* Flags visibility rules to active so layout boxes appear when users click the icon button */
 }
 
-/* RIGHT MAIN CONTENT AREA STYLES */
+/* RIGHT MAIN BODY CONTAINER INTERIOR PANEL STYLES */
 .content-area {
-    flex: 1;
-    padding: 30px;
-    color: white;
+    flex: 1; /* Instructs elements to consume remaining screen real estate width configurations dynamically */
+    padding: 30px; /* Generates boundary buffering spaces around text fields and graphics columns */
+    color: white; /* Forces plain text fallbacks inside main windows to display using standard white text */
 }
-
