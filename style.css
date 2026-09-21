@@ -8,3 +8,57 @@ body { /* Selects the entire body element to apply styles to the whole page */
     background-repeat: no-repeat; /* Prevents the image from duplicating/tiling itself on larger desktop monitors */
     background-attachment: fixed; /* Freezes the image completely in place so content scrolls on top of it */
 } /* Closes the styles rule block for the body element */
+
+/* ... Keep your existing body, top-header, and main-container code the same ... */
+
+/* LEFT SIDEBAR STYLES */
+.left-sidebar {
+    width: 80px; /* Shrunk the layout width down since it only holds a neat icon button now */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    padding: 20px 10px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the icon button horizontally inside the column bar */
+    gap: 15px; /* Adds space between the button and the dropdown menu beneath it */
+}
+
+/* THE ICON BUTTON STYLES */
+.menu-toggle-btn {
+    background: none; /* Strips the default button color away */
+    border: none; /* Removes the default box frame outline border */
+    color: white; /* Makes the font awesome icon white */
+    font-size: 24px; /* Increases the sizing profile of the icon image */
+    cursor: pointer; /* Changes your system mouse cursor to a clicking hand on hover */
+    transition: transform 0.2s ease; /* Adds smooth transition timing animation for mouse hover actions */
+}
+
+/* Smooth zoom effect when hovering over the menu icon */
+.menu-toggle-btn:hover {
+    transform: scale(1.1); /* Scales up the size of the icon slightly on user hover states */
+}
+
+/* THE DROPDOWN SELECT BOX STYLES */
+.dropdown-menu {
+    display: none; /* CORE BEHAVIOR: Conceals the dropdown box from view by default layout rules */
+    width: 140px; /* Gives the dropdown target selector width room for option text entries */
+    padding: 8px; /* Adds comfortable cursor click target space padding inside the selector box */
+    border-radius: 4px; /* Slightly curves the harsh corner points of the selector container elements */
+    background: white; /* Gives the dropdown options panel element background filling color */
+    border: 1px solid #ccc; /* Applies a clean framework design color outline map around the border */
+    position: absolute; /* Frees layout placement rules to hang out without skewing standard column rows */
+    top: 70px; /* Positions the menu right beneath your floating toggle option icon trigger */
+}
+
+/* THE TRIGGER CLASS CONTROLLED BY JAVASCRIPT */
+.dropdown-menu.show {
+    display: block; /* Overrides the default hidden layout state to reveal the dropdown items visually */
+}
+
+/* RIGHT MAIN CONTENT AREA STYLES */
+.content-area {
+    flex: 1;
+    padding: 30px;
+    color: white;
+}
+
