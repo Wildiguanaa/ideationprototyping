@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures the website fits and scales correctly on mobile devices -->
     <title>Ideation & Prototyping</title> <!-- Defines the title text displayed on the browser tab -->
     <link rel="stylesheet" href="style.css"> <!-- Links the external CSS stylesheet file to this HTML document -->
-    
-    <!-- LOTTIE PLAYER SCRIPT: Loads the specialized engine required to render your JSON animation file -->
-    <script src="https://cloudflare.com"></script>
 </head> <!-- Closes the hidden settings section of the webpage -->
 <body> <!-- Opens the visible body section where all website content goes -->
 
@@ -22,10 +19,11 @@
         <!-- LEFT SIDEBAR -->
         <aside class="left-sidebar"> <!-- Defines a sidebar section on the left page layout -->
             
-            <!-- Clickable housing button container for your animated JSON icon asset -->
+            <!-- PURE CSS ANIMATED HAMBURGER BUTTON -->
             <button class="menu-toggle-btn" id="menuToggle" title="Toggle Menu">
-                <!-- An empty container tag where the Lottie engine will draw your JSON animation -->
-                <div id="lottie-icon"></div> 
+                <span class="bar line-1"></span> <!-- Represents the top horizontal line of the menu -->
+                <span class="bar line-2"></span> <!-- Represents the middle horizontal line of the menu -->
+                <span class="bar line-3"></span> <!-- Represents the bottom horizontal line of the menu -->
             </button>
 
             <!-- DROPDOWN BOX (Initially hidden by CSS until clicked) -->
@@ -38,57 +36,31 @@
 
         <!-- RIGHT CONTENT WINDOW -->
         <main class="content-area"> <!-- Defines the primary unique content section of the page -->
-            <p>Projects</p> <!-- Placeholder body text -->
+            <p>Welcome! Your page text or graphics go right here.</p> <!-- Placeholder body text -->
         </main> <!-- Closes the primary content area -->
 
     </div> <!-- Closes the main flexbox wrapper container -->
 
-    <!-- JAVASCRIPT: Placed safely at the bottom to control animation playback and visibility rules -->
+    <!-- JAVASCRIPT: Handles adding classes on user clicks -->
     <script>
-        // Forces the code to wait until the entire page layout safely loads inside the browser
         document.addEventListener("DOMContentLoaded", function() {
-            
-            // 1. INITIALIZE THE LOTTIE ANIMATION
-            const iconContainer = document.getElementById('lottie-icon');
-            const animation = lottie.loadAnimation({
-                container: iconContainer, // Points directly to the div block above
-                renderer: 'svg',          // Renders the JSON vector data cleanly as high-quality web vectors
-                loop: false,              // Prevents the icon from looping infinitely on loop cycles
-                autoplay: false,          // Stops the icon from automatically playing immediately when the page loads
-                path: 'icons8-menu.json'  // The exact name/path of the JSON icon file in your VS Code folder
-            });
-
-            // 2. TOGGLE DROPDOWN & ANIMATION CLICK LOGIC
             const toggleButton = document.getElementById('menuToggle');
             const dropdownMenu = document.getElementById('seasons');
-            let isOpen = false; // Internal tracking flag to remember if the menu panel is opened or shut
 
             toggleButton.addEventListener('click', (event) => {
-                dropdownMenu.classList.toggle('show'); // Toggles the visibility class 'show' on the dropdown select element
-                event.stopPropagation(); // Stops mouse clicks from instantly firing closing triggers on the body map
-                
-                isOpen = !isOpen; // Flips the state flag value
-                
-                if (isOpen) {
-                    animation.setDirection(1);  // Sets the playback movement forward
-                    animation.play();           // Plays the animation (e.g., morphing from lines to an X if supported)
-                } else {
-                    animation.setDirection(-1); // Rewinds the playback movement backward
-                    animation.play();           // Plays the animation backward back into its basic state
-                }
+                // Toggles '.show' to hide or display the dropdown layout panel
+                dropdownMenu.classList.toggle('show'); 
+                // Toggles '.open' on the button to trigger our CSS morphing animation
+                toggleButton.classList.toggle('open'); 
+                event.stopPropagation(); 
             });
 
-            // 3. GLOBAL CLICK BACK-UP
+            // Global fallback click handler that snaps the menu shut if the user clicks out
             document.addEventListener('click', () => {
-                dropdownMenu.classList.remove('show'); // Snaps the menu shut if a user clicks outside the sidebar
-                if(isOpen) {
-                    animation.setDirection(-1); // Rewinds the menu icon back down safely
-                    animation.play();
-                    isOpen = false;
-                }
+                dropdownMenu.classList.remove('show');
+                toggleButton.classList.remove('open');
             });
         });
     </script>
 </body>
 </html>
- 
