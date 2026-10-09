@@ -1,164 +1,23 @@
-<!DOCTYPE html> <!-- Tells the web browser that this file is written in modern HTML5 -->
-<html lang="en"> <!-- Starts the webpage document and sets the primary language to English -->
-<head> <!-- Opens the hidden settings area for metadata, page titles, and linked files -->
-    <meta charset="UTF-8"> <!-- Sets universal character encoding so text displays without glitches -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures the website fits and scales correctly on mobile devices -->
-    <title>Ideation & Prototyping</title> <!-- Defines the title text displayed on the browser tab -->
-    <link rel="stylesheet" href="style.css"> <!-- Links the external CSS stylesheet file to this HTML document -->
-
-    <!-- LOTTIE PLAYER SCRIPT: Loads the specialized engine required to render your JSON animation file -->
-    <script src="https://cloudflare.com"></script>
-</head> <!-- Closes the hidden settings section of the webpage -->
-<body> <!-- Opens the visible body section where all website content goes -->
-
-    <!-- TOP TITLE HEADER -->
-    <header class="top-header"> <!-- Container for the top section of the website -->
-        <h1 class="main-title">Ideation & Prototyping</h1> <!-- Main header text layout -->
-    </header> <!-- Closes the top section -->
-
-    <header class="site-header">
-    <div class="logo">
-        <img src="images/signature-light.png" alt="Joanna Fishman" class="logo-dark" />
-        <img src="images/signature-dark.png" alt="Joanna Fishman" class="logo-light" />
-    </div>
-    <nav class="site-nav">
-        <a href="index.html">Home</a>
-        <a href="https://jdnydigital.com/">Portfolio</a>
-    </nav>
-    </header>
-
-    <!-- MAIN CONTENT AREA WRAPPER -->
-    <div class="main-container"> <!-- Flexbox container that aligns the sidebar and content window side-by-side -->
-
-        <!-- LEFT SIDEBAR -->
-        <aside class="left-sidebar"> <!-- Defines a sidebar section on the left page layout -->
-            
-            <!-- Clickable housing button container for your animated JSON icon asset -->
-            <button class="menu-toggle-btn" id="menuToggle" title="Toggle Menu">
-                <!-- An empty container tag where the Lottie engine will draw your JSON animation -->
-                <div id="lottie-icon"></div> 
-            </button>
-
-            <!-- DROPDOWN BOX (Initially hidden by CSS until clicked) -->
-            <select name="seasons" id="seasons" class="dropdown-menu" onchange="if(this.value) location = this.value;">
-                <option value="">-- Select Options --</option> <!-- Default placeholder dropdown instruction -->
-                <option value="fall2026.html">Fall 2026</option> <!-- Dropdown option pointing to your Fall file -->
-                <option value="summer2026.html">Summer 2026</option> <!-- Dropdown option pointing to your Summer file -->
-            </select> <!-- Closes the dropdown menu element -->
-        </aside> <!-- Closes the left sidebar section -->
-
-        <!-- RIGHT CONTENT WINDOW -->
-        <main class="content-area"> <!-- Defines the primary unique content section of the page -->
-            <p>Projects</p> <!-- Placeholder body text -->
-        </main> <!-- Closes the primary content area -->
-
-    </div> <!-- Closes the main flexbox wrapper container -->
-
-    <!-- JAVASCRIPT: Placed safely at the bottom to control animation playback and visibility rules -->
-
-    <img src="sun.png" alt="Painting of sun by Joanna Solomon.">
-    </img>  
-    <img src="womanlaying.png" alt="Painting of sun by Joanna Solomon.">
-    </img>  
-    <img src="" alt="Painting of sun by Joanna Solomon.">
-    </img>  
-
-
-
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() { 
-        
-        // Initialize the Lottie animation engine
-        const iconContainer = document.getElementById('lottie-icon'); 
-        const animation = lottie.loadAnimation({ 
-            container: iconContainer, 
-            renderer: 'svg',          
-            loop: false,              
-            autoplay: false,          
-            path: 'icons8-menu.json'  
-        }); 
-
-        // Grab layout elements to trigger the collapse animation frames
-        const toggleButton = document.getElementById('menuToggle'); 
-        const dropdownMenu = document.getElementById('seasons'); 
-        const sidebar = document.querySelector('.left-sidebar'); 
-        let isOpen = false; 
-
-        // Handle the button clicks to toggle the side menu frame size
-        toggleButton.addEventListener('click', (event) => { 
-            event.stopPropagation(); 
-            isOpen = !isOpen; 
-            
-            if (isOpen) { 
-                dropdownMenu.classList.add('show'); 
-                sidebar.classList.remove('collapsed'); // Expands the sidebar width
-                animation.setDirection(1);  
-                animation.play();           
-            } else { 
-                dropdownMenu.classList.remove('show'); 
-                sidebar.classList.add('collapsed'); // Collapses the sidebar container width
-                animation.setDirection(-1); 
-                animation.play();           
-            } 
-        }); 
-
-        // Closes everything if you click anywhere else on the blank stars background
-        document.addEventListener('click', () => { 
-            dropdownMenu.classList.remove('show'); 
-            sidebar.classList.add('collapsed'); 
-            if(isOpen) { 
-                animation.setDirection(-1); 
-                animation.play(); 
-                isOpen = false; 
-            } 
-        }); 
-    });
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-</script>
-
-
-
-
-
-
-
-
-
-</body>
-</html>
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Sculpture Creation - Kemp's ridley sea turtle (Lepidochelys kempii)</title>
+<title>Gallery – Ideation & Prototyping</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 <style>
+
+
+
+
+
+
+
+
+
   :root {
     --bg-dark: #040717;
     --bg-card-dark: #151d3d;
@@ -177,6 +36,21 @@
     --font-serif: "Libre Baskerville", serif;
     --font-sans: "Inter", sans-serif;
   }
+
+
+
+  .designer-edge-embed {
+    overflow: hidden;
+    border-radius: 6px;
+  }
+
+  .designer-edge-embed iframe {
+    display: block;
+  }
+
+
+
+
 
   body.light-mode {
     --bg: var(--bg-light);
@@ -211,14 +85,6 @@
     transition: background 0.4s ease, color 0.4s ease;
   }
 
-  body.dark-mode * {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="%23d4d4d4"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z"/></svg>') 12 12, auto;
-}
-
-body.light-mode * {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="%23333333"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z"/></svg>') 12 12, auto;
-}
-
   /* HEADER */
   .site-header {
     position: fixed;
@@ -241,17 +107,26 @@ body.light-mode * {
     border-bottom-color: var(--border);
   }
 
- 
-
 
   .site-header.scrolled {
     padding: 0.5rem 8%;
     background: rgba(4, 7, 23, 0.98);
     transition: all 0.3s ease;
   }
+
   .site-header.scrolled .logo img {
     max-height: 40px;
   }
+
+/*
+  .logo {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+*/
+
+
 
   .logo {
     font-family: var(--font-serif);
@@ -282,6 +157,10 @@ body.light-mode * {
   body.light-mode .logo-light {
     display: block;
   }
+
+
+
+
 
 
   .site-nav {
@@ -331,200 +210,31 @@ body.light-mode * {
   /* MAIN CONTENT */
   main {
     padding-top: 80px;
-    padding: 8rem 5% 3rem;
+    padding: 2.5rem 5% 1.5rem;
   }
 
   h1 {
     font-family: var(--font-serif);
-    font-size: 2.6rem;
-    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    margin-bottom: 0.2rem;
     font-weight: 400;
   }
 
   p {
     color: var(--text-muted);
-    margin-bottom: 3rem;
+    margin-bottom: 0.5rem;
     max-width: 650px;
-    line-height: 1.6;
+    line-height: 1.5;
+    font-size: 0.9rem;
   }
 
-  .gallery {
-    column-count: 3;
-    column-gap: 1.5rem;
-  }
-
-  .item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 4px;
-    cursor: pointer;
-    background: var(--bg-card);
-    margin-bottom: 1.5rem;
-    break-inside: avoid;
-    display: inline-block;
-    width: 100%;
-    border: 1px solid var(--border);
-    transition: all 0.3s ease;
-  }
-
-  .item:hover {
-    border-color: var(--accent);
-  }
-
-  .item img,
-  .item video {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    filter: grayscale(100%);
-    transition: filter 0.4s ease;
-  }
-
-  .item:hover img,
-  .item:hover video {
-    filter: grayscale(0%);
-  }
-
-  /* Varied heights for organic look */
-  .item:nth-child(1) img,
-  .item:nth-child(1) video { height: 400px; }
-
-  .item:nth-child(2) img,
-  .item:nth-child(2) video { height: 500px; }
-
-  .item:nth-child(3) img,
-  .item:nth-child(3) video { height: 350px; }
-
-  .item:nth-child(4) img,
-  .item:nth-child(4) video { height: 450px; }
-
-  .item:nth-child(5) img,
-  .item:nth-child(5) video { height: 380px; }
-
-  .item:nth-child(6) img,
-  .item:nth-child(6) video { height: 520px; }
-
-  .item:nth-child(7) img,
-  .item:nth-child(7) video { height: 420px; }
-
-  .item:nth-child(8) img,
-  .item:nth-child(8) video { height: 480px; }
-
-  .item:nth-child(9) img,
-  .item:nth-child(9) video { height: 400px; }
-
-  .item:nth-child(10) img,
-  .item:nth-child(10) video { height: 520px; }
-
-  .item:nth-child(11) img,
-  .item:nth-child(11) video { height: 380px; }
-
-  .item:nth-child(12) img,
-  .item:nth-child(12) video { height: 450px; }
-
-  .item:nth-child(13) img,
-  .item:nth-child(13) video { height: 500px; }
-
-  .item:nth-child(14) img,
-  .item:nth-child(14) video { height: 420px; }
-
-  .item:nth-child(15) img,
-  .item:nth-child(15) video { height: 480px; }
-
-  .item:nth-child(16) img,
-  .item:nth-child(16) video { height: 390px; }
-
-  .item:nth-child(17) img,
-  .item:nth-child(17) video { height: 440px; }
-
-  .item:nth-child(18) img,
-  .item:nth-child(18) video { height: 510px; }
-
-  /* Play/Expand icon overlay - hidden by default */
-  .action-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background: rgba(80, 30, 40, 0.95);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: #fbf8e8;
-    pointer-events: none;
-    opacity: 0;
-    transition: 0.3s ease;
-  }
-
-  .item:hover .action-icon {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.1);
-  }
-
-  .item-title {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-    color: #fbf8e8;
-    padding: 2rem 1rem 1rem;
-    font-size: 0.95rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .item:hover .item-title {
-    opacity: 1;
-  }
-
-  /* Modal viewer */
-  .modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.95);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    z-index: 2000;
-  }
-
-  .modal img,
-  .modal video {
-    max-width: 90vw;
-    max-height: 85vh;
-    border-radius: 6px;
-  }
-
-  .modal-close {
-    position: fixed;
-    top: 20px;
-    right: 30px;
-    font-size: 2.5rem;
-    color: #fbf8e8;
-    cursor: pointer;
-    font-family: sans-serif;
-    transition: color 0.3s;
-    z-index: 2001;
-  }
-
-  .modal-close:hover {
-    color: var(--accent);
-  }
-
-  /* Back button */
   .back-btn {
     display: inline-block;
-    margin-bottom: 2rem;
+    margin-top: 6rem;
+    margin-bottom: 0.8rem;
     color: var(--accent);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     transition: opacity 0.3s;
   }
 
@@ -532,43 +242,772 @@ body.light-mode * {
     opacity: 0.7;
   }
 
-  /* Responsive */
-  @media (max-width: 1024px) {
-    .gallery {
-      column-count: 2;
+  /* TOP SLIDESHOW */
+  .top-slideshow-container {
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    padding: 0;
+    margin: 0.5rem 0 1rem;
+    max-width: 100%;
+  }
+
+  .top-slideshow-slides {
+    position: relative;
+    width: 100%;
+    background: #000;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: auto;
+    min-height: 150px;
+    max-height: 250px;
+    margin-bottom: 0.5rem;
+  }
+
+  .top-slideshow-slides img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+/*
+  .top-slideshow-slides img.active {
+    opacity: 1;
+  }
+
+*/
+
+
+
+
+  .top-slideshow-slides img.active {
+    opacity: 1 !important;
+    z-index: 10;
+  }
+
+  .top-slideshow-slides img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+  }
+
+
+
+
+
+
+
+
+
+
+  /* IMAGE CAPTION ON HOVER */
+  .top-slideshow-slides {
+    position: relative;
+  }
+
+  .top-slideshow-slides::after {
+    content: attr(data-caption);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: #fbf8e8;
+    padding: 2rem 1.5rem 1.5rem;
+    font-size: 0.95rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .top-slideshow-container:hover .top-slideshow-slides::after {
+    opacity: 1;
+  }
+
+  /* COLLAPSIBLE SECTIONS */
+  .gallery-section {
+    /* margin-bottom: 0.7rem; */
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s ease;
+    user-select: none;
+  }
+
+  .section-header:hover {
+    color: var(--accent-light);
+  }
+
+  .section-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: var(--text-muted);
+    transition: transform 0.3s ease;
+  }
+
+  .section-header.closed .section-toggle {
+    transform: rotate(-90deg);
+  }
+
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .section-description {
+    color: var(--text-muted);
+    margin: 0.25rem 0 0.5rem;
+    max-width: 650px;
+    line-height: 1.5;
+    font-size: 0.85rem;
+    max-height: 500px;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+  }
+
+  .section-header.closed + .section-description {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+  }
+
+  /* SUBSECTIONS */
+  .subsection {
+    margin-bottom: 0.8rem;
+    padding-left: 2rem;
+    border-left: 2px solid var(--border);
+    max-height: 10000px;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+  }
+
+  .section-header.closed ~ .section-description,
+  .section-header.closed ~ .ets-container,
+  .section-header.closed ~ .slideshow-container,
+  .section-header.closed ~ .luma-content,
+  .section-header.closed ~ .subsection, 
+  .section-header.closed ~ div[style*="grid-template-columns"] {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+  }
+
+  .section-description,
+  .ets-container,
+  .slideshow-container,
+  .luma-content,
+  .subsection {
+    max-height: 10000px;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+  }
+
+  .subsection-title {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin-bottom: 0.15rem;
+  }
+
+  .subsection-description {
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  /* SLIDESHOW */
+  .slideshow-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.8rem;
+    margin: 0.6rem 0;
+    max-width: 800px;
+  }
+
+
+
+  .slideshow-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .slideshow-slides {
+    position: relative;
+    width: 100%;
+    background: #000;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: auto;
+    min-height: 200px;
+    max-height: 500px;
+    cursor: pointer;
+  }
+
+  .slideshow-slides img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    cursor: pointer;
+  }
+
+  .slideshow-slides img:hover {
+    cursor: pointer;  /* ADD THESE 3 LINES */
+  }
+
+  .slideshow-slides img.active {
+    opacity: 1;
+  }
+
+  .slideshow-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .slide-btn {
+    background: var(--accent);
+    border: none;
+    color: #fbf8e8;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+  }
+
+  .slide-btn:hover {
+    background: var(--accent-light);
+  }
+
+  .slide-counter {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    min-width: 60px;
+    text-align: center;
+  }
+
+
+  /* LUMA slideshow - remove border 
+  .luma-item .slideshow-container {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0.6rem 0;
+  }
+
+  .luma-item .slideshow-slides {
+    min-height: 250px;
+    max-height: 350px;
+  }
+*/
+
+
+
+
+
+
+
+
+  /* LUMA slideshow - remove border */
+  .luma-item .slideshow-container {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0.6rem 0;
+  }
+
+  .luma-item .slideshow-slides {
+    min-height: 250px;
+    max-height: 350px;
+  }
+
+  /* SEFF slideshow - same as LUMA
+  #slideshow-seff .slideshow-container {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0.6rem 0;
+  }
+
+  #slideshow-seff .slideshow-slides {
+    min-height: 250px;
+    max-height: 350px;
+  }
+ */
+  /* Senior Thesis slideshow - same as LUMA
+  #slideshow-thesis .slideshow-container {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0.6rem 0;
+  }
+
+  #slideshow-thesis .slideshow-slides {
+    min-height: 250px;
+    max-height: 350px;
+  }
+ */
+
+
+/* SEFF slideshow - same as LUMA 
+  #slideshow-seff .slideshow-container {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0.6rem 0;
+  }
+
+  #slideshow-seff .slideshow-slides {
+    min-height: 250px;
+    max-height: 350px;
+    border: none;
+  }
+
+  #slideshow-seff .slideshow-wrapper {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  /* Senior Thesis slideshow - same as LUMA 
+  #slideshow-thesis .slideshow-container {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0.6rem 0;
+  }
+
+  #slideshow-thesis .slideshow-slides {
+    min-height: 250px;
+    max-height: 350px;
+    border: none;
+  }
+
+  #slideshow-thesis .slideshow-wrapper {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+
+    #slideshow-seff .slideshow-wrapper {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  #slideshow-thesis .slideshow-wrapper {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+*/
+
+/* SEFF slideshow - same as LUMA */
+
+
+  #slideshow-seff.slideshow-container {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+
+
+  #slideshow-seff .slideshow-slides {
+    min-height: 250px;
+    max-height: 350px;
+    border: none !important;
+  }
+
+  #slideshow-seff .slideshow-wrapper {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  #slideshow-seff .slideshow-controls {
+    margin-top: 0.5rem;
+  }
+
+
+
+
+  #slideshow-seff .slideshow-slides {
+    min-height: 250px;
+    max-height: 350px;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+
+
+  /* Senior Thesis slideshow - same as LUMA */
+  #slideshow-thesis.slideshow-container {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0.6rem 0 !important;
+  }
+
+  #slideshow-thesis .slideshow-slides {
+    min-height: 250px;
+    max-height: 350px;
+    border: none !important;
+  }
+
+  #slideshow-thesis .slideshow-wrapper {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  #slideshow-thesis .slideshow-controls {
+    margin-top: 0.5rem;
+  }
+
+
+
+
+
+  /* MODAL */
+  .modal {
+    display: none !important;
+  }
+
+  .modal-close {
+    display: none !important;
+  }
+
+  /* ETS SIDE BY SIDE */
+  .ets-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .ets-item {
+    flex: 1;
+  }
+
+
+/*
+
+  .instagram-embed-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+  }
+
+  .instagram-embed-container button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 50;
+    background: var(--accent);
+    color: #f5e8e0;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+  }
+
+  .instagram-embed-container button:hover {
+    background: var(--accent-light);
+  }
+
+
+  .instagram-wrapper {
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+*/
+
+
+  .instagram-embed-container {
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    padding: 0;
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: auto;
+  }
+
+  .instagram-embed-container button {
+    position: relative;
+    margin-bottom: 0.5rem;
+    background: var(--accent);
+    color: #f5e8e0;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+  }
+
+  .instagram-embed-container button:hover {
+    background: var(--accent-light);
+  }
+
+  .instagram-wrapper {
+    width: 100%;
+    max-width: 330px;
+    overflow: hidden;
+    border-radius: 6px;
+    border: none;
+  }
+
+
+
+
+
+
+
+  /* SMALL SLIDESHOW */
+  .slideshow-container.small {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .small-slides {
+    height: 180px !important;
+    max-height: 180px !important;
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .small-slides img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .small-slides img.active {
+    opacity: 1;
+  }
+
+
+
+  .luma-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .luma-embed {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .luma-embed button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 50;
+    background: var(--accent);
+    color: #f5e8e0;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+
+  .luma-embed button:hover {
+    background: var(--accent-light);
+  }
+
+  .luma-embed iframe {
+    width: 100%;
+    height: 400px;      /* Changed from 600px */
+    border: none;
+    display: block;
+  }
+
+
+
+/* IMAGE EXPAND MODAL */
+  .slideshow-slides {
+    cursor: pointer;
+  }
+
+  .slideshow-slides img:hover {
+    cursor: pointer;
+  }
+
+  #imageExpandModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #imageExpandModal.active {
+    display: flex;
+  }
+
+  #expandedImage {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .image-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--accent);
+    color: #f5e8e0;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 2001;
+  }
+
+  .image-modal-close:hover {
+    background: var(--accent-light);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Senior Thesis - 2 column layout */
+  #slideshow-thesis {
+    grid-column: auto;
+  }
+
+
+
+  @media (max-width: 768px) {
+    .luma-content {
+      grid-template-columns: 1fr;
     }
   }
 
+
+
+
+  .slideshow-slides video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .slideshow-slides video.active {
+    opacity: 1;
+  }
+
+
+
+
+
+  /* RESPONSIVE */
   @media (max-width: 768px) {
     main {
-      padding: 6rem 5% 3rem;
+      padding: 6rem 5% 2rem;
     }
     
     h1 {
       font-size: 2rem;
     }
-    
-    .gallery {
-      column-count: 1;
-      column-gap: 1rem;
+
+    p {
+      margin-bottom: 2rem;
     }
-    
-    .item {
-      margin-bottom: 1rem;
+
+    .ets-container {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
-    
-    .action-icon {
-      width: 50px;
-      height: 50px;
-      font-size: 20px;
+
+    .small-slides {
+      height: 200px !important;
+      max-height: 200px !important;
     }
-    
-    /* Simpler heights for mobile */
-    .item:nth-child(odd) img,
-    .item:nth-child(odd) video { height: 350px; }
-    
-    .item:nth-child(even) img,
-    .item:nth-child(even) video { height: 400px; }
 
     .site-nav {
       gap: 1.5rem;
@@ -587,19 +1026,25 @@ body.light-mode * {
     }
   }
 </style>
+  <script async defer src="https://www.instagram.com/embed.js"></script>
 </head>
 <body class="dark-mode">
 
 <header class="site-header">
+  <!--
+  <div class="logo">Joanna Solomon</div>
+-->
+
   <div class="logo">
-    <img src="images/signature-light.png" alt="Joanna Fishman" class="logo-dark" />
-    <img src="images/signature-dark.png" alt="Joanna Fishman" class="logo-light" />
+    <img src="images/signature-light.png" alt="Joanna Solomon" class="logo-dark" />
+    <img src="images/signature-dark.png" alt="Joanna Solomon" class="logo-light" />
   </div>
+
   <nav class="site-nav">
-    <!-- <a href="index.html">Home</a>
+    <a href="index.html">Home</a>
     <a href="index.html#work">Work</a>
     <a href="index.html#about">About</a>
-    <a href="index.html#contact">Contact</a> -->
+    <a href="index.html#contact">Contact</a>
   </nav>
 </header>
 
@@ -608,267 +1053,779 @@ body.light-mode * {
 </button>
 
 <main>
-  <!-- <a href="index.html" class="back-btn">← Back to Portfolio</a> -->
+  <a href="index.html" class="back-btn">← Back to Portfolio</a>
 
-  <h1>Sculpture Creation - Kemp's ridley sea turtle (Lepidochelys kempii)</h1>
-  <p></p>
+  <h1>Ideation & Prototyping</h1>
+  <p>Exploration and iteration under the mentorship of Professor Dalit Shalom.</p>
 
-  <div class="gallery">
-    <!-- Example image item
-    <div class="item" onclick="openModal(this)">
-      <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800" alt="Film Project">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Sample Film Project</div>
-    </div> -->
 
-    <!-- Example video item 
-    <div class="item" onclick="openModal(this)">
-      <video src="https://www.w3schools.com/html/mov_bbb.mp4" muted></video>
-      <div class="action-icon"><i class="fas fa-play"></i></div>
-      <div class="item-title">Sample Video</div>
-    </div> -->
-
-    <!-- Sourced Diagrams Online  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="turtle/IMG_3870.WEBP">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Sourced Diagrams Online</div>
+  <!-- TOP SLIDESHOW - GALLERY GRID FALLBACK -->
+  <div class="top-slideshow-container" id="slideshow-top">
+    <div class="slideshow-wrapper">
+      <!--
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+      -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.8rem; margin-bottom: 1rem;">
+      <!--
+      <img src="images/facemask1.jpg" alt="Face Mask" style="width: 100%; height: 120px; object-fit: cover; border-radius: 4px; cursor: pointer;">
+    -->
+        
+        <img src="images/turtle/turt1.png" alt="Endangered Species Sculpture: Kemp Ridley Sea Turtle" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px; cursor: pointer;"> 
+        <img src="images/50waysofseeing/face1.png" alt="50 Ways of Seeing: Face Interactions" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px; cursor: pointer;"> 
+        <!-- <img src="images/luma.jpg" alt="LUMA Installation" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px; cursor: pointer;"> 
+        <img src="images/lumaaa.png" alt="LUMA Festival" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px; cursor: pointer;"> 
+        <img src="images/seniorthesis.png" alt="Senior Thesis" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px; cursor: pointer;"> 
+        <img src="images/seniorthesis2.png" alt="Senior Thesis 2" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px; cursor: pointer;">  -->
+        </div>
     </div>
+  </div>
 
-    <div class="item" onclick="openModal(this)">
-      <img src="turtle/IMG_3871.GIF">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Sourced Diagrams Online</div>
+
+
+
+
+
+  <!-- ETS -->
+  <div class="gallery-section">
+    <div class="section-header closed" onclick="toggleSection(this)">
+      <span class="section-toggle"><i class="fas fa-chevron-down"></i></span>
+      <h2 class="section-title">Emerging Technology Studio (ETS)</h2>
     </div>
-
-    <div class="item" onclick="openModal(this)">
-      <img src="turtle/IMG_3872 2.PNG">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Sourced Diagrams Online</div>
-    </div>
- 
-    <div class="item" onclick="openModal(this)">
-      <img src="turtle/IMG_3874.jpg">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">KR Sea Turtle Diagram</div>
-    </div>
-
-    <!-- Work starts  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="turtle/IMG_3875.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Sized & printed turtle diagram.</div>
-    </div>
-
-    <!-- flowergirls1  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/flowergirls1.jpg">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Flowers Between Us</div>
-    </div>
-
-    <!-- rena2  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/rena2.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">RENA Fashion Show</div>
-    </div>
-
-        <!-- rena3  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/rena3.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">RENA Fashion Show</div>
-    </div>
-
-        <!-- rena4  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/rena4.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">RENA Fashion Show</div>
-    </div>
-
-            <!-- rena5  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/rena5.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">RENA Fashion Show</div>
-    </div>
-
-    <!-- gseu1  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/gseu.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Graduate Student Union Protest</div>
-    </div>
-
-
-      <!-- momfield1  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/momfield1.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Expanse of Field</div>
-    </div>
-
-    <!-- nrhs1  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/nrhs1.jpg">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">New Rochelle High School</div>
-    </div>
-
-    <!-- grad photos1  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/P1032147.jpg">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Grad Flics</div>
-    </div>
-
-    <!-- performer1  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/photoperf.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">NLE Choppa</div>
-    </div>
-
-    <!-- pigeon  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/pigeon.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Pigeon</div>
-    </div>
-
-    <!-- rays  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/rays.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">ManaRays Sculpture</div>
-    </div>
-
-
-    <!-- rena6  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/rena6.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">RENA Fashion Show</div>
-    </div>
-
-    <!-- rena7  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/rena7.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">RENA Fashion Show</div>
-    </div>
+    <p class="section-description">Technician & Media Specialist <br> I founded and directed an <b>ETS Internship</b> program & launched a design-athon, <b>Designer's Edge</b>.</p>
     
-        <!-- rena8  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/rena8.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">RENA Fashion Show</div>
+    <!-- SIDE BY SIDE -->
+    <div class="ets-container">
+      <!--
+      <div class="ets-item">
+        <div class="slideshow-container small" id="slideshow-ets-internship">
+          <div class="slideshow-wrapper">
+            <div class="slideshow-slides small-slides">
+              <!-- Add your images here 
+            </div>
+            <div class="slideshow-controls">
+              <button onclick="prevSlide('slideshow-ets-internship')" class="slide-btn">❮</button>
+              <span class="slide-counter"><span class="current-slide">0</span> / <span class="total-slides">0</span></span>
+              <button onclick="nextSlide('slideshow-ets-internship')" class="slide-btn">❯</button>
+            </div>
+          </div>
+        </div>
+        <h3 class="subsection-title">Internship</h3>
+        <p class="subsection-description">I delievered hands-on training and in-depth discussions on software and equipment including: 3D printing (FDM & SLA), 3D modeling (Blenda & CAD), Cricut, AR/VR, Shining 3D Scanner, DaVinci Resolve, Canva, Hueforge, and Adobe Suite, among others.</p>
+      </div>
+    -->
+   <!---
+      <div class="ets-item">
+        <div class="designer-edge-embed" style="position: relative;"> 
+        <div class="instagram-embed-container">
+          <div class="instagram-wrapper">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DQU1IMkEo3y/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" data-instgrm-version="14" style="background:transparent; border:none; margin: 0; padding:0; width:100%;"><div style="padding:0;"><a href="https://www.instagram.com/p/DQU1IMkEo3y/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" style="background:transparent; line-height:0; padding:0 0; text-decoration:none; width:100%;" target="_blank"></a></div></blockquote>
+          </div>
+        </div>
+
+     -->
+
+      <div class="ets-item">
+        <div class="instagram-embed-container">
+          <div class="instagram-wrapper">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DQU1IMkEo3y/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" data-instgrm-version="14" style="background:transparent; border:none; margin: 0; padding:0; width:100%;"><div style="padding:0;"><a href="https://www.instagram.com/p/DQU1IMkEo3y/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" style="background:transparent; line-height:0; padding:0 0; text-decoration:none; width:100%;" target="_blank"></a></div></blockquote>
+          </div>
+
+        </div>
+        <h3 class="subsection-title">Internship</h3>
+        <p class="subsection-description">I delievered hands-on training and in-depth discussions on software and equipment including: 3D printing (FDM & SLA), 3D modeling (Blenda & CAD), Cricut, AR/VR, Shining 3D Scanner, DaVinci Resolve, Canva, Hueforge, and Adobe Suite, among others.</p>
+      </div>
+<!----
+      <div class="ets-item">
+        <div class="designer-edge-embed">
+          <iframe 
+            src="https://www.etsbing.tech/designersedge" 
+            style="width: 100%; height: 400px; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 0.5rem; display: block;"
+            title="Designer's Edge"
+            sandbox="allow-same-origin allow-scripts allow-popups">
+          </iframe>
+        </div>
+        <h3 class="subsection-title">Designer's Edge</h3>
+        <p class="subsection-description"><a href="https://www.etsbing.tech/designersedge" target="_blank" style="color: var(--accent-light); text-decoration: none; transition: opacity 0.3s;">View Full Site→</a></p>
+      </div>
+    </div>
+  </div>
+
+-->
+
+
+
+      <div class="ets-item">
+        <div class="designer-edge-embed" style="position: relative;">
+          <button onclick="expandDesignersEdge()" style="position: absolute; top: 10px; right: 10px; z-index: 50; background: var(--accent); color: #f5e8e0; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.9rem; transition: background 0.3s;">⛶ Expand for better view!</button>
+          <!----
+          <iframe 
+            id="designersEdgeFrame"
+            src="https://www.etsbing.tech/designersedge" 
+            style="width: 100%; height: 350px; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 0.5rem; display: block;"
+        -->
+            
+            
+            
+            
+          <iframe 
+            id="designersEdgeFrame"
+            src="https://www.etsbing.tech/designersedge" 
+            style="width: 100%; height: 500px; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 0.5rem; display: block; overflow: hidden;"
+                      
+            
+            
+            
+            
+            
+            
+            title="Designer's Edge"
+            sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+          </iframe>
+        </div>
+        <p class="subsection-description"><a href="https://www.etsbing.tech/designersedge" target="_blank" style="color: var(--accent-light); text-decoration: none; transition: opacity 0.3s;">View Full Site →</a></p>
+        <h3 class="subsection-title">Designer's Edge</h3>
+        <p class="subsection-description">I co-founded and directed a 30-hour design-athon with one of my ETS interns to bring art and stem students into the same space for collaboration across mediums of design! Projects included: game design, web development, 3D printing and modeling, to name a few.</p>
+      </div>
+
+      <!-- Fullscreen Modal for Designer's Edge -->
+      <div id="designersEdgeModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 1000; padding: 2rem;">
+        <button onclick="closeDesignersEdge()" style="position: absolute; top: 20px; right: 20px; background: var(--accent); color: #f5e8e0; border: none; padding: 0.7rem 1.5rem; border-radius: 4px; cursor: pointer; font-size: 1rem;">✕ Close</button>
+        <iframe 
+          src="https://www.etsbing.tech/designersedge" 
+          style="width: 100%; height: 100%; border: none; border-radius: 6px;"
+          title="Designer's Edge Fullscreen"
+          sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Fullscreen Modal for Instagram -->
+      <div id="instagramModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 1000; padding: 2rem;">
+        <button onclick="closeInstagram()" style="position: absolute; top: 20px; right: 20px; background: var(--accent); color: #f5e8e0; border: none; padding: 0.7rem 1.5rem; border-radius: 4px; cursor: pointer; font-size: 1rem;">✕ Close</button>
+        <iframe 
+          src="https://www.instagram.com/p/DQU1IMkEo3y/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" 
+          style="width: 100%; height: 100%; border: none; border-radius: 6px;"
+          title="ETS Internship Instagram Post Fullscreen"
+          sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+        </iframe>
+      </div>
+
+
+  <!-- LUMA 
+  <div class="gallery-section">
+    <div class="section-header closed" onclick="toggleSection(this)">
+      <span class="section-toggle"><i class="fas fa-chevron-down"></i></span>
+      <h2 class="section-title">LUMA Festival</h2>
+    </div>
+    <p class="section-description">Light projection installations.</p>
+    <div class="slideshow-container" id="slideshow-luma">
+      <div class="slideshow-wrapper">
+        <div class="slideshow-slides">
+
+          <img src="images/luma.jpg" alt="LUMA Installation 1">
+          <img src="images/lumaaa.png" alt="LUMA Installation 2">
+
+        </div>
+        <div class="slideshow-controls">
+          <button onclick="prevSlide('slideshow-luma')" class="slide-btn">❮</button>
+          <span class="slide-counter"><span class="current-slide">0</span> / <span class="total-slides">0</span></span>
+          <button onclick="nextSlide('slideshow-luma')" class="slide-btn">❯</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+-->
+
+
+<div class="gallery-section">
+  <div class="section-header closed" onclick="toggleSection(this)">
+    <span class="section-toggle"><i class="fas fa-chevron-down"></i></span>
+    <h2 class="section-title">LUMA Light Projection Arts Festival</h2>
+  </div>
+  <p class="section-description">Artist</p>
+  <!--
+  <div class="luma-content">
+    <div class="luma-item">
+      <div class="luma-embed">
+        <button onclick="expandLumaWebpage()">⛶ Expand for better view!</button>
+        <iframe src="https://lumafestival.com/feature/art-of-our-faces/" style="width: 100%; height: 600px; border: none;" title="LUMA Festival"></iframe>
+      </div>
+      <h3 class="subsection-title">Featured at LUMA Festival</h3>
+      <p class="subsection-description"><a href="https://lumafestival.com/feature/art-of-our-faces/" target="_blank" style="color: var(--accent-light);">View Full Feature →</a></p>
     </div>
 
-        <!-- rena9  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/rena9.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">RENA Fashion Show</div>
+  -->
+
+
+
+<!---
+  <div class="luma-content">
+    <div class="luma-item">
+      <div class="luma-embed">
+        <button onclick="expandLumaWebpage()">⛶ Expand for better view!</button>
+        <iframe 
+          id="lumaWebpageFrame"
+          src="https://lumafestival.com/feature/art-of-our-faces/" 
+          style="width: 100%; height: 400px; border: none; display: block; overflow: hidden;"
+          title="LUMA Festival - Art of Our Faces"
+          sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+        </iframe>
+      </div>
+
+
+
+
+
+
+    <div class="luma-item">
+      <div class="slideshow-container" id="slideshow-luma">
+        <div class="slideshow-wrapper">
+          <div class="slideshow-slides">
+            <img src="images/luma.jpg" alt="LUMA Installation 1">
+            <img src="images/lumaaa.png" alt="LUMA Installation 2">
+          </div>
+          <div class="slideshow-controls">
+            <button onclick="prevSlide('slideshow-luma')" class="slide-btn">❮</button>
+            <span class="slide-counter"><span class="current-slide">0</span> / <span class="total-slides">0</span></span>
+            <button onclick="nextSlide('slideshow-luma')" class="slide-btn">❯</button>
+          </div>
+        </div>
+      </div>
+      <h3 class="subsection-title">Project Images</h3>
+      <p class="subsection-description">Additional photos from the installation.</p>
+    </div>
+  </div>
+
+  <div id="lumaWebpageModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 1000; padding: 2rem;">
+    <button onclick="closeLumaWebpage()" style="position: absolute; top: 20px; right: 20px; background: var(--accent); color: #f5e8e0; border: none; padding: 0.7rem 1.5rem; border-radius: 4px; cursor: pointer;">✕ Close</button>
+    <iframe src="https://lumafestival.com/feature/art-of-our-faces/" style="width: 100%; height: 100%; border: none;"></iframe>
+  </div>
+</div>
+
+
+-->
+
+
+
+
+
+
+<!---
+
+  <div class="luma-content">
+    <div class="luma-item">
+      <div class="slideshow-container" id="slideshow-luma">
+        <div class="slideshow-wrapper">
+          <div class="slideshow-slides">
+
+
+
+
+          <div class="slideshow-slides">
+            <img src="images/luma.jpg" alt="LUMA Installation 1">
+            <img src="images/lumaaa.png" alt="LUMA Installation 2">
+            <video alt="LUMA Animation 1" style="width: 100%; height: 100%; object-fit: contain;">
+              <source src="videos/Face_Block_Animation_4.mov" type="video/quicktime">
+            </video>
+            <video alt="LUMA Animation 2" style="width: 100%; height: 100%; object-fit: contain;">
+              <source src="videos/Joanna_FionaFace.mov" type="video/quicktime">
+            </video>
+          </div>
+
+
+
+
+          <div class="slideshow-controls">
+            <button onclick="prevSlide('slideshow-luma')" class="slide-btn">❮</button>
+            <span class="slide-counter"><span class="current-slide">0</span> / <span class="total-slides">0</span></span>
+            <button onclick="nextSlide('slideshow-luma')" class="slide-btn">❯</button>
+          </div>
+        </div>
+      </div>
+      <h3 class="subsection-title">"Art of Our Faces"</h3>
+      <p class="subsection-description">Using the TROIKATRONIX Isadora software, I collaborated to create complex interactive light projection mappings to display handmade animated real-time motion graphics fit to volunteers' faces. Our team crafted animations through techniques and software such as Rotoscoping, Dragonframe, ProCreate, and Adobe Suite. These animations include flesh and skull, flowers, emotion and lots of play.</p>
     </div>
 
-    <!-- senior thesis1  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/seniorthesis.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Senior Thesis</div>
-    </div>
 
-    <!-- senior thesis 2  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/seniorthesis2.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Senior Thesis</div>
-    </div>
 
-    <!-- ukraineprotest  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/ukraine.jpg">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Protest Against the War in Ukraine</div>
-    </div>
 
-    <!-- waterlily  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/waterlily.jpg">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Water Lily</div>
-    </div>
-
-    <!-- willsboro  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/willsboro1.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Willsboro</div>
-    </div>
-
-     <!-- tent1  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/tent.jpg">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Portal to Somewhere</div>
-    </div>
-
-<!-- red1margot1  -->
-    <div class="item" onclick="openModal(this)">
-      <img src="images/red1margot1.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">RED 1 Margot Rocket</div>
-    </div>
-
+--
     
-
-    
-
-
+    <div class="luma-item">
+      <div class="luma-embed">
 
 
+        <button onclick="expandLumaWebpage()" style="position: absolute; top: 10px; right: 10px; z-index: 50; background: var(--accent); color: #f5e8e0; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.9rem; transition: background 0.3s;">⛶ Expand for better view!</button>
 
 
- 
-
- 
-
-   <!--  grad photos1 
-    <div class="item" onclick="openModal(this)">
-      <img src="images/P1032147.jpg">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Grad Flics</div>
+        <iframe 
+          id="lumaWebpageFrame"
+          src="https://lumafestival.com/feature/art-of-our-faces/" 
+          style="width: 100%; height: 400px; border: none; display: block; overflow: hidden;"
+          title="LUMA Festival - Art of Our Faces"
+          sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+        </iframe>
+      </div>
+      <h3 class="subsection-title">Featured at LUMA Festival</h3>
+      <p class="subsection-description"><a href="https://lumafestival.com/feature/art-of-our-faces/" target="_blank" style="color: var(--accent-light);">View Full Feature →</a></p>
     </div>
 
-     performer1  
-    <div class="item" onclick="openModal(this)">
-      <img src="images/photoperf.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Audience</div>
-    </div>
 
-     pigeon  
-    <div class="item" onclick="openModal(this)">
-      <img src="images/pigeon.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">Pigeon</div>
-    </div>
-
-     rays  
-    <div class="item" onclick="openModal(this)">
-      <img src="images/rays.png">
-      <div class="action-icon"><i class="fas fa-expand"></i></div>
-      <div class="item-title">ManaRays Sculpture</div>
-    </div>   -->
-
-  
+    <div id="lumaWebpageModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 1000; padding: 2rem;">
+      <button onclick="closeLumaWebpage()" style="position: absolute; top: 20px; right: 20px; background: var(--accent); color: #f5e8e0; border: none; padding: 0.7rem 1.5rem; border-radius: 4px; cursor: pointer; font-size: 1rem;">✕ Close</button>
+      <iframe 
+        src="https://lumafestival.com/feature/art-of-our-faces/" 
+        style="width: 100%; height: 100%; border: none; border-radius: 6px;"
+        title="LUMA Festival Fullscreen"
+        sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+      </iframe>
 
 
   </div>
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---
+
+<div class="luma-item">
+      <div class="luma-embed">
+        <button onclick="expandLumaWebpage()" style="position: absolute; top: 10px; right: 10px; z-index: 50; background: var(--accent); color: #f5e8e0; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.9rem; transition: background 0.3s;">⛶ Expand for better view!</button>
+
+        <iframe 
+          id="lumaWebpageFrame"
+          src="https://lumafestival.com/feature/art-of-our-faces/" 
+          style="width: 100%; height: 400px; border: none; display: block; overflow: hidden;"
+          title="LUMA Festival - Art of Our Faces"
+          sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+        </iframe>
+      </div>
+      <h3 class="subsection-title">Featured at LUMA Festival</h3>
+      <p class="subsection-description"><a href="https://lumafestival.com/feature/art-of-our-faces/" target="_blank" style="color: var(--accent-light);">View Full Feature →</a></p>
+    </div>
+  </div>
+
+  <div id="lumaWebpageModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 1000; padding: 2rem;">
+    <button onclick="closeLumaWebpage()" style="position: absolute; top: 20px; right: 20px; background: var(--accent); color: #f5e8e0; border: none; padding: 0.7rem 1.5rem; border-radius: 4px; cursor: pointer; font-size: 1rem;">✕ Close</button>
+    <iframe 
+      src="https://lumafestival.com/feature/art-of-our-faces/" 
+      style="width: 100%; height: 100%; border: none; border-radius: 6px;"
+      title="LUMA Festival Fullscreen"
+      sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+    </iframe>
+  </div>
+</div>
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="luma-content">
+    <div class="luma-item">
+      <div class="slideshow-container" id="slideshow-luma">
+        <div class="slideshow-wrapper">
+          <div class="slideshow-slides">
+            <img src="images/luma.jpg" alt="LUMA Installation 1">
+            <img src="images/lumaaa.png" alt="LUMA Installation 2">
+            <img src="images/luma2.png" alt="LUMA Installation 1">
+            <img src="images/luma3.png" alt="LUMA Installation 2">
+            <img src="images/luma4.jpg" alt="LUMA Installation 1">
+            <img src="images/luma5.jpg" alt="LUMA Installation 2">
+            <img src="images/luma6.png" alt="LUMA Installation 2">
+            <img src="images/luma7.jpg" alt="LUMA Installation 1">
+            <img src="images/luma8.jpg" alt="LUMA Installation 2">
+          </div>
+          <div class="slideshow-controls">
+            <button onclick="prevSlide('slideshow-luma')" class="slide-btn">❮</button>
+            <span class="slide-counter"><span class="current-slide">0</span> / <span class="total-slides">0</span></span>
+            <button onclick="nextSlide('slideshow-luma')" class="slide-btn">❯</button>
+          </div>
+        </div>
+      </div>
+      <h3 class="subsection-title">"Art of Our Faces"</h3>
+      <p class="subsection-description">Using the TROIKATRONIX Isadora software, I collaborated to create complex interactive light projection mappings to display handmade animated real-time motion graphics fit to volunteers' faces. Our team crafted animations through techniques and software such as Rotoscoping, Dragonframe, ProCreate, and Adobe Suite. These animations include flesh and skull, flowers, emotion and lots of play.</p>
+    </div>
+
+    <div class="luma-item">
+      <div class="luma-embed">
+        <button onclick="expandLumaWebpage()" style="position: absolute; top: 10px; right: 10px; z-index: 50; background: var(--accent); color: #f5e8e0; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.9rem; transition: background 0.3s;">⛶ Expand for better view!</button>
+        <iframe 
+          id="lumaWebpageFrame"
+          src="https://lumafestival.com/feature/art-of-our-faces/" 
+          style="width: 100%; height: 400px; border: none; display: block; overflow: hidden;"
+          title="LUMA Festival - Art of Our Faces"
+          sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+        </iframe>
+      </div>
+      <p class="subsection-description"><a href="https://lumafestival.com/feature/art-of-our-faces/" target="_blank" style="color: var(--accent-light);"><br>View Full Site →</a></p>
+    
+      <h3 class="subsection-title">Featured at LUMA Festival</h3>
+     
+    </div>
+  </div>
+
+  <div id="lumaWebpageModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 1000; padding: 2rem;">
+    <button onclick="closeLumaWebpage()" style="position: absolute; top: 20px; right: 20px; background: var(--accent); color: #f5e8e0; border: none; padding: 0.7rem 1.5rem; border-radius: 4px; cursor: pointer; font-size: 1rem;">✕ Close</button>
+    <iframe 
+      src="https://lumafestival.com/feature/art-of-our-faces/" 
+      style="width: 100%; height: 100%; border: none; border-radius: 6px;"
+      title="LUMA Festival Fullscreen"
+      sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+    </iframe>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- SEFF -->
+  <div class="gallery-section">
+    <div class="section-header closed" onclick="toggleSection(this)">
+      <span class="section-toggle"><i class="fas fa-chevron-down"></i></span>
+      <h2 class="section-title">Student Experimental Film Festival (SEFF)</h2>
+    </div>
+    <p class="section-description">Director & Coordinator of Media/Design, Outreach and Finance</p>
+    <div class="slideshow-container" id="slideshow-seff">
+      <div class="slideshow-wrapper">
+        <div class="slideshow-slides">
+          <!-- Add your images here -->
+          <img src="images/seff1.jpg" alt="">
+          <img src="images/seff2.png" alt="">
+          <img src="images/seff3.png" alt="">
+          <img src="images/seff4.jpg" alt="">
+          <img src="images/seff5.jpg" alt="">
+          <img src="images/seff6.jpg" alt="">
+          <img src="images/seff7.jpg" alt="">
+          <img src="images/seff8.png" alt="">
+          <img src="images/seff9.png" alt="">
+          <img src="images/seff10.png" alt="">
+          
+        </div>
+        <div class="slideshow-controls">
+          <button onclick="prevSlide('slideshow-seff')" class="slide-btn">❮</button>
+          <span class="slide-counter"><span class="current-slide">0</span> / <span class="total-slides">0</span></span>
+          <button onclick="nextSlide('slideshow-seff')" class="slide-btn">❯</button>
+        </div>
+      </div>
+
+      <h3 class="subsection-title">Film Festival</h3>
+      <p class="subsection-description">Directed a student film festival by curating and programming selections while leading outreach, media/design, and financial operations. Increased the festival’s visibility through strategic partnerships, cohesive branding, and event coordination. Secured funding through grants, crowdfunding, and student initiatives, and built campus partnerships for sponsorships, equipment, and venue support. Also designed and 3D-printed custom festival awards to elevate the professional experience for participating filmmakers.</p>
+    </div>
+  </div>
+
+  <!-- Senior Thesis 
+  <div class="gallery-section">
+    <div class="section-header closed" onclick="toggleSection(this)">
+      <span class="section-toggle"><i class="fas fa-chevron-down"></i></span>
+      <h2 class="section-title">Senior Thesis</h2>
+    </div>
+    <p class="section-description">Cinema thesis project under the guidance of Professor Ariana Gerstein.</p>
+    <div class="slideshow-container" id="slideshow-thesis">-->
+     
+
+
+
+
+
+
+
+
+<!-- Senior Thesis 
+  <div class="gallery-section">
+    <div class="section-header closed" onclick="toggleSection(this)">
+      <span class="section-toggle"><i class="fas fa-chevron-down"></i></span>
+      <h2 class="section-title">Senior Thesis</h2>
+    </div>
+    <p class="section-description">Cinema thesis project under the guidance of Professor Ariana Gerstein.</p>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 0.5rem;">
+       YouTube Video (LEFT) 
+      <div>
+        <div style="position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 4px; overflow: hidden;">
+          <iframe 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+            src="https://www.youtube.com/embed/eSOkbM3oO50" 
+            title="Senior Thesis Film"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <h3 class="subsection-title">Full Film</h3>
+        <p class="subsection-description">Watch the complete senior thesis film.</p>
+      </div>
+
+      Images Slideshow (RIGHT)
+      <div class="slideshow-container" id="slideshow-thesis">
+        <div class="slideshow-wrapper">
+                <div class="slideshow-slides">
+                   Add your images here 
+                  <img src="images/thesis2.png" alt="Thesis">
+                  <img src="images/thesis3.png" alt="Thesis">
+                  <img src="images/thesis4.png" alt="Thesis">
+                  <img src="images/thesis5.png" alt="Thesis">
+                  <img src="images/thesis6.png" alt="Thesis">
+                  <img src="images/thesis7.png" alt="Thesis">
+                  <img src="images/thesis8.png" alt="Thesis">
+                  <img src="images/thesis9.png" alt="Thesis">
+                  <img src="images/thesis10.png" alt="Thesis">
+                  <img src="images/thesis11.png" alt="Thesis">
+                  <img src="images/thesis12.png" alt="Thesis">
+                  <img src="images/thesis13.png" alt="Thesis">
+                  <img src="images/thesis14.png" alt="Thesis">
+
+                </div>
+                <div class="slideshow-controls">
+                  <button onclick="prevSlide('slideshow-thesis')" class="slide-btn">❮</button>
+                  <span class="slide-counter"><span class="current-slide">0</span> / <span class="total-slides">0</span></span>
+                  <button onclick="nextSlide('slideshow-thesis')" class="slide-btn">❯</button>
+                </div>
+              </div>
+
+              <h3 class="subsection-title">A Mixed Media Performance: Visual Poetry</h3>
+              <p class="subsection-description">My senior thesis is a hybrid film and sculptural installation built from a poem I first wrote at seventeen, then renewed at twenty-one as a reflection of how time, identity, and selfhood evolve. The work explores the tension of constraint versus freedom, using the body as both subject and surface; something lived in, acted upon, and reshaped.<br> <br>The film features two dancers performing as two versions of myself: the younger self and the current self. Their choreography becomes a language of gesture -sometimes tender, sometimes frantic- suggesting the push and pull of invisible hands, history, and expectation. Visual motifs draw from textiles, skin, and “product” or objecthood imagery: the self as object, the self as something created, consumed, and displayed.<br> <br>The final piece is presented as a light projection; film on a canvas held by a 3D-printed replica of my own arms and face. Using 3D scanning, modeling, and printing, I constructed a sculptural cradle for the screen -turning the act of viewing into something intimate, bodily, and unsettling. The installation frames the film as both memory and artifact: a personal “product” held in place by the self that made it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    -->
+
+
+
+
+
+
+<!-- Senior Thesis -->
+  <div class="gallery-section">
+    <div class="section-header closed" onclick="toggleSection(this)">
+      <span class="section-toggle"><i class="fas fa-chevron-down"></i></span>
+      <h2 class="section-title">Senior Thesis</h2>
+    </div>
+    <p class="section-description">Cinema thesis project under the guidance of Professor Ariana Gerstein.</p>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 0.5rem;">
+      <!-- Images Slideshow (LEFT) -->
+      <div>
+        <div class="slideshow-container" id="slideshow-thesis">
+          <div class="slideshow-wrapper">
+            <div class="slideshow-slides">
+              <img src="images/thesis.png" alt="Installation Sculpture">
+              <img src="images/thesis2.png" alt="Thesis">
+              <img src="images/thesis3.png" alt="Thesis">
+              <img src="images/thesis4.png" alt="Thesis">
+              <img src="images/thesis5.png" alt="Thesis">
+              <img src="images/thesis6.png" alt="Thesis">
+              <img src="images/thesis7.png" alt="Thesis">
+              <img src="images/thesis8.png" alt="Thesis">
+              <img src="images/thesis9.png" alt="Thesis">
+              <img src="images/thesis10.png" alt="Thesis">
+              <img src="images/thesis11.png" alt="Thesis">
+              <img src="images/thesis12.png" alt="Thesis">
+              <img src="images/thesis13.png" alt="Thesis">
+              <img src="images/thesis14.png" alt="Thesis">
+            </div>
+            <div class="slideshow-controls">
+              <button onclick="prevSlide('slideshow-thesis')" class="slide-btn">❮</button>
+              <span class="slide-counter"><span class="current-slide">0</span> / <span class="total-slides">0</span></span>
+              <button onclick="nextSlide('slideshow-thesis')" class="slide-btn">❯</button>
+            </div>
+          </div>
+        </div>
+        <h3 class="subsection-title">A Mixed Media Performance: Visual Poetry</h3>
+        <p class="subsection-description">My senior thesis is a hybrid film and sculptural installation built from a poem I first wrote at seventeen, then renewed at twenty-one as a reflection of how time, identity, and selfhood evolve. The work explores the tension of constraint versus freedom, using the body as both subject and surface; something lived in, acted upon, and reshaped.<br> <br>The film features two dancers performing as two versions of myself: the younger self and the current self. Their choreography becomes a language of gesture -sometimes tender, sometimes frantic- suggesting the push and pull of invisible hands, history, and expectation. Visual motifs draw from textiles, skin, and "product" or objecthood imagery: the self as object, the self as something created, consumed, and displayed.<br> <br>The final piece is presented as a light projection; film on a canvas held by a 3D-printed replica of my own arms and face. Using 3D scanning, modeling, and printing, I constructed a sculptural cradle for the screen -turning the act of viewing into something intimate, bodily, and unsettling. The installation frames the film as both memory and artifact: a personal "product" held in place by the self that made it.</p>
+      </div>
+
+
+
+
+      <!-- YouTube Video (RIGHT) -->
+      <div>
+        <div style="position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 4px; overflow: hidden;">
+          <iframe 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+            src="https://www.youtube.com/embed/eSOkbM3oO50" 
+            title="Senior Thesis Film"
+            allowfullscreen="" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+          </iframe>
+        </div>
+        <h3 class="subsection-title">Full Film</h3>
+        <p class="subsection-description">Please note that this was an installation piece. The video above only displays the film aspect. In performance, this piece is projected onto a canvas held by a lifesize 3D printed replica of my arms and face that I constructed. See slideshow for images of the setup.</p>
+        
+        <embed src="pdfs/Product Poem - Original and Renewed.pdf" type="application/pdf" style="width: 100%; height: 250px; border: 1px solid var(--border); border-radius: 6px; margin: 0.5rem 0;"> 
+        <h3 class="subsection-title">Poem - Original and Renewed</h3>
+        </div>
+
+
+    </div>
+  </div>
+
+
+
+
+<!-- Senior Thesis 
+  <div class="gallery-section">
+    <div class="section-header closed" onclick="toggleSection(this)">
+      <span class="section-toggle"><i class="fas fa-chevron-down"></i></span>
+      <h2 class="section-title">Senior Thesis</h2>
+    </div>
+    <p class="section-description">Cinema thesis project under the guidance of Professor Ariana Gerstein.</p>
+   
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 0.5rem;">
+     YouTube Video (LEFT) 
+      <div style="position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 4px; overflow: hidden;">
+        <iframe 
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+          src="https://www.youtube.com/embed/eSOkbM3oO50" 
+          title="Senior Thesis Film"
+          allowfullscreen="" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+        </iframe>
+      </div>
+        <h3 class="subsection-title">Full Film</h3>
+        <p class="subsection-description">Watch the complete senior thesis film.</p>
+      </div>
+
+   
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 0.5rem;">
+   YouTube Video (LEFT) 
+      <div>
+        <div style="position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 4px; overflow: hidden;">
+          <iframe 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+            src="https://www.youtube.com/embed/eSOkbM3oO50" 
+            title="Senior Thesis Film"
+            allowfullscreen="" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+          </iframe>
+        </div>
+        <h3 class="subsection-title">Full Film</h3>
+        <p class="subsection-description">Watch the complete senior thesis film.</p>
+      </div>
+
+      <!-- Images Slideshow (RIGHT) 
+      <div>
+        <div class="slideshow-container" id="slideshow-thesis">
+          <!-- slideshow content 
+        </div>
+        <h3 class="subsection-title">A Mixed Media Performance: Visual Poetry</h3>
+        <p class="subsection-description">description ></p>
+      </div>
+    </div>
+
+
+
+
+      <!-- Images Slideshow (RIGHT)
+      <div>
+        <div class="slideshow-container" id="slideshow-thesis">
+          <div class="slideshow-wrapper">
+            <div class="slideshow-slides">
+              <img src="images/thesis2.png" alt="Thesis">
+              <img src="images/thesis3.png" alt="Thesis">
+              <img src="images/thesis4.png" alt="Thesis">
+              <img src="images/thesis5.png" alt="Thesis">
+              <img src="images/thesis6.png" alt="Thesis">
+              <img src="images/thesis7.png" alt="Thesis">
+              <img src="images/thesis8.png" alt="Thesis">
+              <img src="images/thesis9.png" alt="Thesis">
+              <img src="images/thesis10.png" alt="Thesis">
+              <img src="images/thesis11.png" alt="Thesis">
+              <img src="images/thesis12.png" alt="Thesis">
+              <img src="images/thesis13.png" alt="Thesis">
+              <img src="images/thesis14.png" alt="Thesis">
+            </div>
+            <div class="slideshow-controls">
+              <button onclick="prevSlide('slideshow-thesis')" class="slide-btn">❮</button>
+              <span class="slide-counter"><span class="current-slide">0</span> / <span class="total-slides">0</span></span>
+              <button onclick="nextSlide('slideshow-thesis')" class="slide-btn">❯</button>
+            </div>
+          </div>
+        </div>
+        <h3 class="subsection-title">A Mixed Media Performance: Visual Poetry</h3>
+        <p class="subsection-description">My senior thesis is a hybrid film and sculptural installation built from a poem I first wrote at seventeen, then renewed at twenty-one as a reflection of how time, identity, and selfhood evolve. The work explores the tension of constraint versus freedom, using the body as both subject and surface; something lived in, acted upon, and reshaped.<br> <br>The film features two dancers performing as two versions of myself: the younger self and the current self. Their choreography becomes a language of gesture -sometimes tender, sometimes frantic- suggesting the push and pull of invisible hands, history, and expectation. Visual motifs draw from textiles, skin, and "product" or objecthood imagery: the self as object, the self as something created, consumed, and displayed.<br> <br>The final piece is presented as a light projection; film on a canvas held by a 3D-printed replica of my own arms and face. Using 3D scanning, modeling, and printing, I constructed a sculptural cradle for the screen -turning the act of viewing into something intimate, bodily, and unsettling. The installation frames the film as both memory and artifact: a personal "product" held in place by the self that made it.</p>
+      </div>
+    </div>
+  </div>
+
+-->
+
 </main>
+
+<!-- Image Expand Modal -->
+<div id="imageExpandModal">
+  <button class="image-modal-close" onclick="closeImageModal()">✕</button>
+  <img id="expandedImage" alt="Expanded view">
+</div>
+
+
 
 <!-- Modal -->
 <div class="modal" id="modal" onclick="checkModalClick(event)">
@@ -877,7 +1834,6 @@ body.light-mode * {
 </div>
 
 <script>
-  // Theme toggle
   function toggleTheme() {
     const body = document.body;
     const icon = document.getElementById('theme-icon');
@@ -897,7 +1853,6 @@ body.light-mode * {
     }
   }
 
-  // Load saved theme
   window.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('theme') || 'dark';
     const body = document.body;
@@ -910,56 +1865,299 @@ body.light-mode * {
       icon.classList.remove('fa-moon');
       icon.classList.add('fa-sun');
     }
+
+    initSlideshow('slideshow-ets-internship');
+    initSlideshow('slideshow-ets-designers-edge');
+    initSlideshow('slideshow-luma');
+    initSlideshow('slideshow-seff');
+    initSlideshow('slideshow-thesis');
+    initSlideshow('slideshow-top');
+
+    addImageClickListeners();
   });
 
-  // Gallery functions
-  function openModal(el) {
-    const modal = document.getElementById("modal");
-    const content = document.getElementById("modal-content");
-    let media = el.querySelector("img")?.cloneNode() ||
-                 el.querySelector("video")?.cloneNode();
-    
-    if (media.tagName === "VIDEO") {
-      media.controls = true;
-      media.autoplay = true;
-      media.muted = false;
-    }
-    
-    content.innerHTML = "";
-    content.appendChild(media);
-    modal.style.display = "flex";
+  function toggleSection(header) {
+    header.classList.toggle('closed');
   }
 
-  function openInstagram(url) {
-    window.open(url, '_blank');
+  let slideshows = {};
+/*
+  function initSlideshow(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const slides = container.querySelectorAll('.slideshow-slides img');
+    */
+
+  function initSlideshow(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const slides = container.querySelectorAll('.slideshow-slides img, .slideshow-slides video');
+
+
+
+
+
+    if (slides.length === 0) {
+      container.querySelector('.slide-counter').innerHTML = '<span class="current-slide">0</span> / <span class="total-slides">0</span>';
+      return;
+    }
+
+    slideshows[containerId] = {
+      currentIndex: 0,
+      slides: slides,
+      interval: null
+    };
+
+    updateCounter(containerId);
+    if (slides.length > 0) {
+      slides[0].classList.add('active');
+    }
+    startAutoplay(containerId);
+  }
+
+    // DEBUG: Log slideshow info
+    console.log(`Slideshow ${containerId} initialized with ${slides.length} images`);
+    slides.forEach((slide, index) => {
+      console.log(`Image ${index}: ${slide.src}`);
+    });
+
+
+  function showSlide(containerId, index) {
+    const slideshow = slideshows[containerId];
+    if (!slideshow) return;
+
+    const slides = slideshow.slides;
+    
+    if (index >= slides.length) {
+      slideshow.currentIndex = 0;
+    } else if (index < 0) {
+      slideshow.currentIndex = slides.length - 1;
+    } else {
+      slideshow.currentIndex = index;
+    }
+
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[slideshow.currentIndex].classList.add('active');
+    
+    // Update caption
+    const container = document.getElementById(containerId);
+    const currentImg = slides[slideshow.currentIndex];
+    const caption = currentImg.getAttribute('alt') || '';
+    const slidesDiv = container.querySelector('.top-slideshow-slides') || container.querySelector('.slideshow-slides');
+    if (slidesDiv) {
+      slidesDiv.setAttribute('data-caption', caption);
+    }
+    
+    updateCounter(containerId);
+    stopAutoplay(containerId);
+    startAutoplay(containerId);
+  }
+
+  function nextSlide(containerId) {
+    const slideshow = slideshows[containerId];
+    if (!slideshow) return;
+    showSlide(containerId, slideshow.currentIndex + 1);
+  }
+
+  function prevSlide(containerId) {
+    const slideshow = slideshows[containerId];
+    if (!slideshow) return;
+    showSlide(containerId, slideshow.currentIndex - 1);
+  }
+
+  function startAutoplay(containerId) {
+    const slideshow = slideshows[containerId];
+    if (!slideshow || slideshow.slides.length <= 1) return;
+
+    slideshow.interval = setInterval(() => {
+      nextSlide(containerId);
+    }, 5000);
+  }
+
+  function stopAutoplay(containerId) {
+    const slideshow = slideshows[containerId];
+    if (!slideshow || !slideshow.interval) return;
+    clearInterval(slideshow.interval);
+    slideshow.interval = null;
+  }
+
+  function updateCounter(containerId) {
+    const container = document.getElementById(containerId);
+    const slideshow = slideshows[containerId];
+    
+    if (!slideshow) {
+      container.querySelector('.current-slide').textContent = '0';
+      container.querySelector('.total-slides').textContent = '0';
+      return;
+    }
+
+    container.querySelector('.current-slide').textContent = slideshow.currentIndex + 1;
+    container.querySelector('.total-slides').textContent = slideshow.slides.length;
   }
 
   function closeModal() {
-    const modal = document.getElementById("modal");
-    const video = modal.querySelector("video");
-    
-    if (video) {
-      video.pause();
-      video.currentTime = 0;
-    }
-    
-    modal.style.display = "none";
-    document.getElementById("modal-content").innerHTML = "";
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+    document.getElementById('modal-content').innerHTML = '';
   }
 
   function checkModalClick(e) {
-    const modal = document.getElementById("modal");
-    
+    const modal = document.getElementById('modal');
     if (e.target === modal) {
       closeModal();
     }
   }
-
+/*
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       closeModal();
     }
   });
+*/
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+      closeImageModal();
+      closeInstagram();
+      closeDesignersEdge();
+      closeLumaWebpage();
+    }
+  });
+
+
+
+  function expandDesignersEdge() {
+    document.getElementById('designersEdgeModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDesignersEdge() {
+    document.getElementById('designersEdgeModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  // Close modal when pressing Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeInstagram();
+      closeDesignersEdge();
+      closeLumaWebpage();
+    }
+  });
+
+
+
+
+
+
+  function expandInstagram() {
+    document.getElementById('instagramModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeInstagram() {
+    document.getElementById('instagramModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+
+
+  function openInstagramLink() {
+    window.open('https://www.instagram.com/p/DQU1IMkEo3y/', '_blank');
+  }
+
+
+
+
+  function expandLumaWebpage() {
+    document.getElementById('lumaWebpageModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLumaWebpage() {
+    document.getElementById('lumaWebpageModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+
+// Image Expand Modal Functions
+  function expandImage(imgElement) {
+    const modal = document.getElementById('imageExpandModal');
+    const expandedImg = document.getElementById('expandedImage');
+    expandedImg.src = imgElement.src;
+    expandedImg.alt = imgElement.alt;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeImageModal() {
+    const modal = document.getElementById('imageExpandModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+/*
+  // Close modal when clicking outside the image
+  document.addEventListener('click', function(event) {
+    const modal = document.getElementById('imageExpandModal');
+    if (event.target === modal) {
+      closeImageModal();
+    }
+  });
+*/
+
+  // Close modal when clicking outside the image
+  document.getElementById('imageExpandModal').addEventListener('click', function(event) {
+    if (event.target === this) {
+      closeImageModal();
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeImageModal();
+    }
+  });
+/*
+  // Add click listeners to all slideshow images
+  function addImageClickListeners() {
+    const allImages = document.querySelectorAll('.slideshow-slides img, .top-slideshow-slides img');
+    allImages.forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', function(e) {
+        e.stopPropagation();
+        expandImage(this);
+      });
+    });
+  }
+*/
+
+// Add click listeners to all slideshow images
+  function addImageClickListeners() {
+    // Get all images from slideshows (both regular slideshows and top gallery grid)
+    const allImages = document.querySelectorAll('.slideshow-slides img, .top-slideshow-slides img, div[style*="grid-template-columns"] img');
+    
+    allImages.forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', function(e) {
+        e.stopPropagation();
+        expandImage(this);
+      });
+    });
+  }
+
+
+
+
+
+  // Initialize image click listeners when page loads
+  window.addEventListener('DOMContentLoaded', function() {
+    addImageClickListeners();
+  });
+
+
 </script>
 
 </body>
