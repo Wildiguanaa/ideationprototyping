@@ -518,26 +518,6 @@
   }
 
 
-  /* LUMA slideshow - remove border 
-  .luma-item .slideshow-container {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0.6rem 0;
-  }
-
-  .luma-item .slideshow-slides {
-    min-height: 250px;
-    max-height: 350px;
-  }
-*/
-
-
-
-
-
-
-
 
   /* LUMA slideshow - remove border */
   .luma-item .slideshow-container {
@@ -552,89 +532,6 @@
     max-height: 350px;
   }
 
-  /* SEFF slideshow - same as LUMA
-  #slideshow-seff .slideshow-container {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0.6rem 0;
-  }
-
-  #slideshow-seff .slideshow-slides {
-    min-height: 250px;
-    max-height: 350px;
-  }
- */
-  /* Senior Thesis slideshow - same as LUMA
-  #slideshow-thesis .slideshow-container {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0.6rem 0;
-  }
-
-  #slideshow-thesis .slideshow-slides {
-    min-height: 250px;
-    max-height: 350px;
-  }
- */
-
-
-/* SEFF slideshow - same as LUMA 
-  #slideshow-seff .slideshow-container {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0.6rem 0;
-  }
-
-  #slideshow-seff .slideshow-slides {
-    min-height: 250px;
-    max-height: 350px;
-    border: none;
-  }
-
-  #slideshow-seff .slideshow-wrapper {
-    background: transparent;
-    border: none;
-    padding: 0;
-  }
-
-  /* Senior Thesis slideshow - same as LUMA 
-  #slideshow-thesis .slideshow-container {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0.6rem 0;
-  }
-
-  #slideshow-thesis .slideshow-slides {
-    min-height: 250px;
-    max-height: 350px;
-    border: none;
-  }
-
-  #slideshow-thesis .slideshow-wrapper {
-    background: transparent;
-    border: none;
-    padding: 0;
-  }
-
-
-    #slideshow-seff .slideshow-wrapper {
-    background: transparent;
-    border: none;
-    padding: 0;
-  }
-
-  #slideshow-thesis .slideshow-wrapper {
-    background: transparent;
-    border: none;
-    padding: 0;
-  }
-*/
-
-/* SEFF slideshow - same as LUMA */
 
 
   #slideshow-seff.slideshow-container {
@@ -724,50 +621,6 @@
     flex: 1;
   }
 
-
-/*
-
-  .instagram-embed-container {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 1rem;
-    margin-bottom: 0.5rem;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 400px;
-  }
-
-  .instagram-embed-container button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 50;
-    background: var(--accent);
-    color: #f5e8e0;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background 0.3s;
-  }
-
-  .instagram-embed-container button:hover {
-    background: var(--accent-light);
-  }
-
-
-  .instagram-wrapper {
-    width: 100%;
-    max-width: 400px;
-    overflow: hidden;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-  }
-*/
 
 
   .instagram-embed-container {
@@ -1293,7 +1146,7 @@
 
 
     <p class="section-description">Assignment</p>
-    <div class="slideshow-container" id="slideshow-seff">
+    <div class="slideshow-container" id="slideshow-thesis">
     <div style="display: flex; gap: 10px;">
       <img src="images/turtle/turt1.png" alt="Endangered Species: Kemp's Ridley Sea Turtle" style="width: 48%; height: 300px; object-fit: contain; border-radius: 4px; cursor: pointer;">
       <img src="images/turtle/turt2 Background Removed.png" alt="Endangered Species: Kemp's Ridley Sea Turtle" style="width: 48%; height: 300px; object-fit: contain; border-radius: 4px; cursor: pointer;">
@@ -1305,7 +1158,7 @@
           <!-- Add your images here -->
           <img src="images/turtle/IMG_3870.WEBP" alt="">
           <img src="images/turtle/IMG_3871.GIF" alt="">
-          <img src="images/turtle/IMG_3872 2.PNG" alt="">
+          <!-- <img src="images/turtle/IMG_3872 2.PNG" alt=""> -->
           <img src="images/turtle/IMG_3872.PNG" alt="">
           <img src="images/turtle/IMG_3874.jpg" alt="">
           <img src="images/turtle/IMG_3875.png" alt="">
@@ -1323,7 +1176,7 @@
           <img src="images/turtle/IMG_3887.png" alt="">
           <img src="images/turtle/IMG_3888.png" alt="">
           <img src="images/turtle/IMG_3889.png" alt="">
-          <img src="images/turtle/IMG_3890 2.png" alt="">
+          <!-- <img src="images/turtle/IMG_3890 2.png" alt=""> -->
           <img src="images/turtle/IMG_3891 2.png" alt="">
           <img src="images/turtle/IMG_3892.png" alt="">
           <img src="images/turtle/IMG_3893.png" alt="">
@@ -1341,9 +1194,9 @@
           
         </div>
         <div class="slideshow-controls">
-          <button onclick="prevSlide('slideshow-seff')" class="slide-btn">❮</button>
+          <button onclick="prevSlide('slideshow-thesis')" class="slide-btn">❮</button>
           <span class="slide-counter"><span class="current-slide">0</span> / <span class="total-slides">0</span></span>
-          <button onclick="nextSlide('slideshow-seff')" class="slide-btn">❯</button>
+          <button onclick="nextSlide('slideshow-thesis')" class="slide-btn">❯</button>
         </div>
       </div>
 
