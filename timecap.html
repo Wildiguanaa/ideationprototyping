@@ -21,3 +21,19 @@
         }
 
     </style>
+    
+</head> 
+<body class="black background">      
+    <!-- first 2 parts -->     
+    <div id="terminal-screen" class="absolute inset-0 z-50 flex flex-col justify-between p-8 bg-black transition-opacity duration-1000">         
+        <!-- Text Surge Left Column -->         
+    <div id="text-surge-stream" class="w-1/4 h-3/4 flex flex-col-reverse justify-end gap-1 text-xs text-emerald-500/40 overflow-hidden leading-tight"></div>                  
+         <!-- Main Interactive Prompt -->         
+    <div class="absolute inset-0 flex flex-col justify-center items-center p-4">             
+    <div class="max-w-xl w-full text-center space-y-6">                 
+        <p id="prompt-text" class="text-sm md:text-base tracking-wider text-emerald-400 min-h-[40px]"></p>                 
+        <input type="text" id="capsule-input" autofocus autocomplete="off" class="w-full bg-transparent border-b border-emerald-800 text-emerald-300 text-center py-2 focus:outline-none focus:border-emerald-400 transition-colors text-lg tracking-widest uppercase">                 
+        <span class="block text-xs text-gray-600 mt-2">Press [enter] after typing your thoughts</span>             
+    </div>         
+</div>     
+</div>
