@@ -12,45 +12,53 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* ---------- stage ---------- */
   #stage {
-    position: fixed; inset: 0;
+    position: fixed; inset: 0; z-index: 4;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     padding: 24px; text-align: center; gap: 18px;
   }
   #prompt {
     font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
-    min-height: 20px; opacity: 0; transition: opacity 1.5s;
+    min-height: 20px; opacity: 0; transition: opacity 1.5s; color: #b8b2a7;
   }
   #prompt.show { opacity: 1; }
 
-  /* the one input: caret is the "cursor" */
-  #field {
-    background: none; border: none; outline: none;
-    color: #e8e2d6; font: inherit; font-size: 18px;
-    text-align: center; width: min(420px, 90vw);
-    caret-color: #e8e2d6; caret-shape: block;
+  /* visible typing line with our own blinking cursor */
+  #line {
+    display: flex; justify-content: center; align-items: center;
+    font-size: 20px; color: #e8e2d6; min-height: 30px; max-width: 90vw;
+    word-break: break-word;
   }
+  #cur {
+    display: inline-block; width: 11px; height: 22px; margin-left: 3px;
+    background: #e8e2d6; animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
   #hint {
-    font-size: 10px; letter-spacing: 3px; color: #4a463f;
+    font-size: 11px; letter-spacing: 3px; color: #8d877b;
     text-transform: uppercase; transition: opacity 1s;
   }
   #response {
     font-size: 14px; max-width: 420px; line-height: 1.6;
-    min-height: 24px; color: #8d877b;
+    min-height: 24px; color: #a39d90;
   }
 
-  /* ---------- left text surge ---------- */
+  /* real input: invisible, only catches the keyboard */
+  #field {
+    position: fixed; top: 0; left: 0; width: 1px; height: 1px;
+    opacity: 0; border: 0; padding: 0; font-size: 16px;
+  }
+
   #surge {
     position: fixed; left: 14px; top: 14px; bottom: 14px; width: 24%;
-    overflow: hidden; pointer-events: none;
-    font-size: 10px; line-height: 1.5; color: #4a463f;
+    overflow: hidden; pointer-events: none; z-index: 3;
+    font-size: 10px; line-height: 1.5; color: #6b665c;
     transform-origin: top; transition: transform 1.2s ease-in, opacity 1.2s;
   }
   #surge.collapse { transform: scaleY(0); opacity: 0; }
 
-  /* ---------- dirt ---------- */
   #dirt {
     position: fixed; left: 0; right: 0; bottom: 0; height: 0;
     background:
@@ -58,10 +66,245 @@
       radial-gradient(circle at 70% 60%, #1f160e 0 2px, transparent 3px) 0 0 / 31px 27px,
       radial-gradient(circle at 50% 50%, #4b392a 0 1px, transparent 2px) 0 0 / 13px 11px,
       linear-gradient(#2a1f15, #120c07);
-    opacity: 0; transition: opacity 2.5s, height 2.5s;
-    z-index: 0;
+    opacity: 0; transition: opacity 2.5s, height 2.5s; z-index: 0;
   }
   #dirt.in { opacity: 1; height: 55vh; }
   #dirt.dig { animation: dig .25s; }
   @keyframes dig {
-    0% { transform: translate(0,0); } 25% { transform:
+    0% { transform: translate(0,0); } 25% { transform: translate(-4px,3px); }
+    50% { transform: translate(4px,-2px); } 75% { transform: translate(-2px,2px); }
+    100% { transform: translate(0,0); }
+  }
+
+  #dig-btn {
+    position: fixed; left: 50%; top: 62%; margin: -60px 0 0 -60px;
+    z-index: 5; display: none; cursor: pointer;
+    width: 120px; height: 120px; border-radius: 50%;
+    border: 1px dashed #a8977f; background: rgba(0,0,0,.45);
+    color: #d6c5ad; font: inherit; font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 50% { transform: scale(1.08); opacity: .6; } }
+
+  #pile {
+    position: fixed; left: 0; right: 0; bottom: 4vh; z-index: 2;
+    display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
+    padding: 0 10px; pointer-events: none;
+  }
+  .card {
+    width: 150px; background: #1b1b1b; border: 1px solid #555;
+    border-radius: 8px; padding: 6px; text-align: left;
+    box-shadow: 0 10px 25px rgba(0,0,0,.7);
+    transform: translateY(120px); opacity: 0;
+    transition: transform 1.2s cubic-bezier(.2,.8,.2,1), opacity 1.2s;
+    position: relative; overflow: hidden;
+  }
+  .card.up { opacity: 1; transform: translateY(0) rotate(var(--r)); }
+  .card img {
+    width: 100%; display: block; border-radius: 4px;
+    image-rendering: pixelated; filter: contrast(1.15) brightness(.92);
+  }
+  .card .fallback {
+    height: 90px; background: #0e0e0e; border: 1px solid #333;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; opacity: .5;
+  }
+  .card .cap {
+    font-size: 8px; letter-spacing: 2px; color: #999;
+    margin-top: 5px; text-transform: uppercase;
+  }
+  .card::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,.18) 50%, transparent 65%);
+  }
+
+  #flash { position: fixed; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 9; transition: opacity .12s; }
+  #flash.on { opacity: .9; }
+
+  .fade { animation: fade 2s forwards; }
+  @keyframes fade { from { opacity: 1; } to { opacity: 0; transform: translate(-50%, 60px); } }
+</style>
+</head>
+<body>
+
+<div id="flash"></div>
+<div id="surge"></div>
+<div id="dirt"></div>
+<button id="dig-btn">dig</button>
+<div id="pile"></div>
+
+<div id="stage">
+  <div id="prompt"></div>
+  <div id="line"><span id="typed"></span><span id="cur"></span></div>
+  <div id="hint">tap or click, then type</div>
+  <div id="response"></div>
+</div>
+<input id="field" type="text" autocomplete="off" autocapitalize="off" spellcheck="false">
+
+<script>
+/* ===== YOUR IDS: edit these ===== */
+const ids = [
+  { img: "di1.png", label: "Student ID · 2012" },
+  { img: "di2.png", label: "Driver License · 2016" },
+  { img: "di3.png", label: "Access Badge · 2020" }
+];
+
+/* ===== keyword responses ===== */
+const replies = [
+  [/school|class|teacher/,        "Some halls remember footsteps long after the bell."],
+  [/friend|people|him|her|them/,  "Names fade first. Then faces. Then the sound of laughing."],
+  [/home|house|room/,             "Rooms keep their shape in the dark."],
+  [/time|years|young|child/,      "Time doesn't take things. It just stops handing them back."],
+  [/love|miss/,                   "Missing something means it was real."],
+  [/\bme\b|myself|\bi\b/,         "Someone was here before you. Let's see what they left."]
+];
+const fallbackReply = "Something is under here. Let's go looking.";
+
+/* ===== elements ===== */
+const $ = id => document.getElementById(id);
+const field = $("field"), typed = $("typed"), line = $("line"),
+      promptEl = $("prompt"), hint = $("hint"), response = $("response"),
+      surge = $("surge"), dirt = $("dirt"), digBtn = $("dig-btn"),
+      pile = $("pile"), flash = $("flash");
+
+let stage = "ask";   // ask -> busy -> dig -> bury -> done
+let found = 0, words = [];
+
+/* ===== input: mirror the hidden field onto the screen ===== */
+function focusField() { if (stage === "ask" || stage === "bury") field.focus(); }
+document.addEventListener("click", focusField);
+document.addEventListener("touchstart", focusField);
+document.addEventListener("keydown", e => {
+  if (document.activeElement !== field) focusField();
+});
+field.addEventListener("input", () => {
+  typed.textContent = field.value;
+  hint.style.opacity = 0;
+  showPrompt();
+});
+field.addEventListener("keydown", e => {
+  if (e.key !== "Enter" || !field.value.trim()) return;
+  const text = field.value.trim();
+  field.value = ""; typed.textContent = "";
+  if (stage === "ask") answer(text);
+  else if (stage === "bury") bury(text);
+});
+
+/* question fades in on first keystroke, or after 2 seconds regardless */
+function showPrompt() {
+  if (stage !== "ask" || promptEl.textContent) return;
+  promptEl.textContent = "what have you lost to time?";
+  promptEl.classList.add("show");
+}
+setTimeout(showPrompt, 2000);
+focusField();
+
+/* ===== stage 1: answer ===== */
+function answer(text) {
+  stage = "busy";
+  words = text.split(/\s+/);
+  const hit = replies.find(([re]) => re.test(text.toLowerCase()));
+  response.textContent = hit ? hit[1] : fallbackReply;
+  runSurge();
+  setTimeout(showDirt, 4500);
+}
+
+/* text surges down the left, then collapses back up */
+function runSurge() {
+  surge.classList.remove("collapse");
+  surge.innerHTML = "";
+  const bits = [...words, "2012", "2016", "2020", "RECORD", "EXPIRED", "LOST", "FOUND"];
+  for (let i = 0; i < 40; i++) {
+    setTimeout(() => {
+      const d = document.createElement("div");
+      d.textContent = bits[Math.floor(Math.random() * bits.length)] + "_" +
+        Math.random().toString(16).slice(2, 6).toUpperCase();
+      surge.appendChild(d);
+    }, i * 55);
+  }
+  setTimeout(() => surge.classList.add("collapse"), 2600);
+}
+
+/* ===== stage 2: dirt fades in ===== */
+function showDirt() {
+  line.style.display = "none";
+  hint.style.display = "none";
+  promptEl.textContent = "";
+  response.textContent = "";
+  dirt.classList.add("in");
+  setTimeout(() => {
+    digBtn.style.display = "block";
+    promptEl.textContent = "tap the circle · or shake your phone";
+    promptEl.classList.add("show");
+    stage = "dig";
+    enableShake();
+  }, 2600);
+}
+
+/* ===== stage 3: dig (tap or shake) ===== */
+digBtn.addEventListener("click", dig);
+
+function dig() {
+  if (stage !== "dig") return;
+  dirt.classList.remove("dig"); void dirt.offsetWidth; dirt.classList.add("dig");
+  flash.classList.add("on"); setTimeout(() => flash.classList.remove("on"), 120);
+
+  const item = ids[found];
+  const card = document.createElement("div");
+  card.className = "card";
+  card.style.setProperty("--r", (Math.random() * 14 - 7) + "deg");
+  card.innerHTML = `<img src="${item.img}" alt=""><div class="cap">${item.label}</div>`;
+  card.querySelector("img").onerror = function () {
+    this.outerHTML = '<div class="fallback">🫥</div>';
+  };
+  pile.appendChild(card);
+  setTimeout(() => card.classList.add("up"), 50);
+
+  found++;
+  if (found >= ids.length) {
+    stage = "busy";
+    digBtn.style.display = "none";
+    setTimeout(askBury, 3000);
+  }
+}
+
+/* shake detection (iOS asks for motion permission on first tap) */
+let shakeOn = false;
+function enableShake() {
+  if (shakeOn) return; shakeOn = true;
+  let last = 0;
+  const start = () => window.addEventListener("devicemotion", e => {
+    const a = e.accelerationIncludingGravity; if (!a) return;
+    const force = Math.abs(a.x) + Math.abs(a.y) + Math.abs(a.z);
+    const now = Date.now();
+    if (force > 35 && now - last > 900) { last = now; dig(); }
+  });
+  if (typeof DeviceMotionEvent !== "undefined" && DeviceMotionEvent.requestPermission) {
+    digBtn.addEventListener("click", () =>
+      DeviceMotionEvent.requestPermission().then(r => r === "granted" && start()).catch(() => {}),
+      { once: true });
+  } else start();
+}
+
+/* ===== stage 4: bury your own ===== */
+function askBury() {
+  stage = "bury";
+  promptEl.textContent = "what will you bury for the next person?";
+  line.style.display = "flex";
+  focusField();
+}
+
+function bury(text) {
+  stage = "done";
+  const t = document.createElement("div");
+  t.textContent = text;
+  t.style.cssText = "position:fixed;left:50%;top:40%;transform:translateX(-50%);z-index:6;font-size:20px;color:#e8e2d6";
+  t.className = "fade";
+  document.body.appendChild(t);
+  line.style.display = "none";
+  promptEl.textContent = "";
+  setTimeout(() => { response.textContent = "It's buried. Someone will find it."; }, 1800);
+}
+</script>
+</body>
+</html>
