@@ -6,6 +6,18 @@
     <!-- tailwind css just for styline -->     
     <script src="https://jsdelivr.net"></script>     
     <style>
-
+        /* blinking cursor */
+        .cursor {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        /* changeable pixelation filter for my ids */
+        .pixelated {
+            image-rendering: pixelated;
+            filter: contrast(1.2) brightness(0.9);
+        }
 
     </style>
