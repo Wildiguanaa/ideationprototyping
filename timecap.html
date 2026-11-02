@@ -24,7 +24,7 @@
   }
   #prompt.show { opacity: 1; }
 
-  /* visible typing line with our own blinking cursor */
+  /* visible typing line with my own blinking cursor */
   #line {
     display: flex; justify-content: center; align-items: center;
     font-size: 20px; color: #e8e2d6; min-height: 30px; max-width: 90vw;
@@ -136,13 +136,13 @@
 <div id="stage">
   <div id="prompt"></div>
   <div id="line"><span id="typed"></span><span id="cur"></span></div>
-  <div id="hint">tap or click, then type</div>
+  <div id="hint">tap or click then type</div>
   <div id="response"></div>
 </div>
 <input id="field" type="text" autocomplete="off" autocapitalize="off" spellcheck="false">
 
 <script>
-/* ===== YOUR IDS: edit these ===== */
+/* my IDS: edit these ===== */
 const ids = [
   { img: "di1.png", label: "Student ID · 2012" },
   { img: "di2.png", label: "Driver License · 2016" },
@@ -151,14 +151,14 @@ const ids = [
 
 /* ===== keyword responses ===== */
 const replies = [
-  [/school|class|teacher/,        "Some halls remember footsteps long after the bell."],
-  [/friend|people|him|her|them/,  "Names fade first. Then faces. Then the sound of laughing."],
-  [/home|house|room/,             "Rooms keep their shape in the dark."],
-  [/time|years|young|child/,      "Time doesn't take things. It just stops handing them back."],
-  [/love|miss/,                   "Missing something means it was real."],
-  [/\bme\b|myself|\bi\b/,         "Someone was here before you. Let's see what they left."]
+//   [/school|class|teacher/,        "Some halls remember footsteps long after the bell."],
+//   [/friend|people|him|her|them/,  "Names fade first. Then faces. Then the sound of laughing."],
+//   [/home|house|room/,             "Rooms keep their shape in the dark."],
+//   [/time|years|young|child/,      "Time doesn't take things. It just stops handing them back."],
+//   [/love|miss/,                   "Missing something means it was real."],
+//   [/\bme\b|myself|\bi\b/,         "Someone was here before you. Let's see what they left."]
 ];
-const fallbackReply = "Something is under here. Let's go looking.";
+// const fallbackReply = "Something is under here. Let's go looking.";
 
 /* ===== elements ===== */
 const $ = id => document.getElementById(id);
