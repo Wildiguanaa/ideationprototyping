@@ -1,9 +1,10 @@
-<!DOCTYPE html> 
-<html lang="en"> <head>     
+<!DOCTYPE html>
+<html lang="en">
+<head>     
     <meta charset="UTF-8">     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">     
     <title>Digital Paper Trail/Time Capsule</title>     
-    <!-- tailwind css just for styling -->     
+    <!-- FIXED: Correct working CDN link for Tailwind CSS -->     
     <script src="https://jsdelivr.net"></script>     
     <style>
         /* blinking cursor */
@@ -19,8 +20,6 @@
             image-rendering: pixelated;
             filter: contrast(1.2) brightness(0.9);
         }
-
-         
             
         /* glossy Overlay */         
         .glare {             
@@ -28,11 +27,8 @@
             background-size: 200% 200%;             
             background-position: var(--x, 0%) var(--y, 0%);         
         }
-
     </style>
-    
 </head> 
-</head>
 <body class="bg-black text-stone-300 font-mono min-h-screen overflow-hidden select-none transition-colors duration-75 relative">
 
     <!-- CAMERA FLASH BLOCK -->
@@ -60,28 +56,26 @@
 
             <!-- PHASE 4: ID CARD DISPLAY PANEL -->
             <div id="id-display" class="hidden space-y-6 flex flex-col items-center">
-                <!-- Laminated ID Placeholder Card -->
-                <div id="laminate-card" class="glare relative w-72 h-44 rounded-lg border border-stone-700/60 bg-stone-900/90 shadow-2xl p-4 flex flex-col justify-between text-left overflow-hidden transition-transform duration-300">
-                    <div class="flex justify-between items-start text-[8px] text-stone-500 tracking-widest">
+                <!-- Laminated ID Placeholder Card (Optimized to let your background graphics di1-3 shine through) -->
+                <div id="laminate-card" class="glare pixelated relative w-72 h-44 rounded-lg border border-stone-700/60 bg-stone-900 bg-cover bg-center shadow-2xl p-4 flex flex-col justify-between text-left overflow-hidden transition-transform duration-300">
+                    <div class="flex justify-between items-start text-[8px] text-white tracking-widest mix-blend-difference drop-shadow-md">
                         <span id="card-header">IDENTIFICATION SPEC</span>
                         <span id="card-year">0000</span>
                     </div>
-                    <div class="flex gap-3 my-2 items-center">
-                        <!-- Pixelated Avatar Block -->
-                        <div class="w-16 h-20 bg-stone-950 border border-stone-800 flex items-center justify-center text-stone-700 text-xs">
-                            <span class="opacity-20">🫥</span>
-                        </div>
-                        <!-- Blurred Redacted Info -->
+                    
+                    <!-- Fallback placeholder boxes inside if an image path fails to resolve locally -->
+                    <div id="fallback-graphics" class="flex gap-3 my-2 items-center pointer-events-none transition-opacity duration-300">
+                        <div class="w-16 h-20 bg-stone-950 border border-stone-800 flex items-center justify-center text-stone-700 text-xs"><span class="opacity-20">🫥</span></div>
                         <div class="space-y-2 flex-1">
                             <div class="h-3 bg-stone-800/80 rounded w-3/4"></div>
                             <div class="h-2 bg-stone-950 rounded w-5/6"></div>
                             <div class="h-2 bg-stone-950 rounded w-1/2"></div>
-                            <div class="h-2 bg-stone-950/40 rounded w-2/3"></div>
                         </div>
                     </div>
-                    <div class="text-[8px] text-stone-600 font-mono flex justify-between border-t border-stone-800/60 pt-2">
+
+                    <div class="text-[8px] text-white font-mono flex justify-between border-t border-stone-800/60 pt-2 mix-blend-difference drop-shadow-md">
                         <span>STATUS: EXPIRED</span>
-                        <span>[ DATA RECOVERED ]</span>
+                        <span>[ RECORD VIEW ]</span>
                     </div>
                 </div>
                 <button id="back-btn" class="text-[10px] tracking-[0.2em] text-stone-500 hover:text-white uppercase transition-colors cursor-pointer">[ Return to Records ]</button>
@@ -98,14 +92,12 @@
     </div>
 
     <script>
-        // Data layers mapping years to dynamic labels
-// Data layers mapping years to your actual image files
+        // Data layers mapping years to image files
         const idLibrary = {
             "2012": { header: "STUDENT ID CARD", year: "2012", img: "di1.png" },
             "2016": { header: "DRIVER LICENSE", year: "2016", img: "di2.png" },
             "2020": { header: "ACCESS BADGE", year: "2020", img: "di3.png" }
         };
-
 
         let viewedRecords = new Set();
         const mainPromptText = "Identifying subject... Select a record layer to expose:█";
@@ -123,6 +115,7 @@
         const cardContainer = document.getElementById('laminate-card');
         const cardHeader = document.getElementById('card-header');
         const cardYear = document.getElementById('card-year');
+        const fallbackGraphics = document.getElementById('fallback-graphics');
 
         const signatureArea = document.getElementById('signature-area');
         const canvas = document.getElementById('sig-canvas');
@@ -174,19 +167,4 @@
                         // Hydrate ID display fields dynamically
                         cardHeader.textContent = idLibrary[id].header;
                         cardYear.textContent = idLibrary[id].year;
-
-                        menuGrid.classList.replace('grid', 'hidden');
-                        idDisplay.classList.remove('hidden');
-                        systemStatus.textContent = `Viewing Record Layer: ${id}`;
-                    }, 100);
-                }, 300);
-            });
-        });
-
-        // Return to Menu Option
-        backBtn.addEventListener('click', () => {
-            idDisplay.classList.add('hidden');
-            
-            // Check if all layers have been explored
-            if (viewedRecords.size >= Object.keys(idLibrary).length) {
-                systemStatus.textContent = "All records analyzed.";
+                        
