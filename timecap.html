@@ -1,170 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>     
-    <meta charset="UTF-8">     
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
-    <title>Digital Paper Trail/Time Capsule</title>     
-    <!-- FIXED: Correct working CDN link for Tailwind CSS -->     
-    <script src="https://jsdelivr.net"></script>     
-    <style>
-        /* blinking cursor */
-        .cursor {
-            animation: blink 1s infinite;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        /* changeable pixelation filter for my ids */
-        .pixelated {
-            image-rendering: pixelated;
-            filter: contrast(1.2) brightness(0.9);
-        }
-            
-        /* glossy Overlay */         
-        .glare {             
-            background: linear-gradient(105deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.18) 45%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0.18) 55%, rgba(255,255,255,0) 70%);             
-            background-size: 200% 200%;             
-            background-position: var(--x, 0%) var(--y, 0%);         
-        }
-    </style>
-</head> 
-<body class="bg-black text-stone-300 font-mono min-h-screen overflow-hidden select-none transition-colors duration-75 relative">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Capsule</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; height: 100%; background: #000; color: #b8b2a7;
+    font-family: "Courier New", monospace; overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-    <!-- CAMERA FLASH BLOCK -->
-    <div id="flash-overlay" class="absolute inset-0 bg-white opacity-0 pointer-events-none transition-opacity duration-75 z-50"></div>
+  /* ---------- stage ---------- */
+  #stage {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 24px; text-align: center; gap: 18px;
+  }
+  #prompt {
+    font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+    min-height: 20px; opacity: 0; transition: opacity 1.5s;
+  }
+  #prompt.show { opacity: 1; }
 
-    <!-- TEXT SURGE CASCADE (Left Sidebar) -->
-    <div id="text-stream" class="absolute left-4 top-4 bottom-4 w-1/5 flex flex-col justify-end gap-1 text-[10px] text-stone-600 overflow-hidden pointer-events-none leading-none"></div>
+  /* the one input: caret is the "cursor" */
+  #field {
+    background: none; border: none; outline: none;
+    color: #e8e2d6; font: inherit; font-size: 18px;
+    text-align: center; width: min(420px, 90vw);
+    caret-color: #e8e2d6; caret-shape: block;
+  }
+  #hint {
+    font-size: 10px; letter-spacing: 3px; color: #4a463f;
+    text-transform: uppercase; transition: opacity 1s;
+  }
+  #response {
+    font-size: 14px; max-width: 420px; line-height: 1.6;
+    min-height: 24px; color: #8d877b;
+  }
 
-    <!-- MAIN APP CANVAS CONTAINER -->
-    <div class="absolute inset-0 flex flex-col justify-center items-center p-4">
-        <div class="max-w-md w-full text-center space-y-8">
-            
-            <!-- System Prompts -->
-            <div class="space-y-2">
-                <p id="system-status" class="text-xs text-stone-600 uppercase tracking-widest">...</p>
-                <h1 id="main-prompt" class="text-sm tracking-widest text-stone-400 min-h-[20px] uppercase"></h1>
-            </div>
+  /* ---------- left text surge ---------- */
+  #surge {
+    position: fixed; left: 14px; top: 14px; bottom: 14px; width: 24%;
+    overflow: hidden; pointer-events: none;
+    font-size: 10px; line-height: 1.5; color: #4a463f;
+    transform-origin: top; transition: transform 1.2s ease-in, opacity 1.2s;
+  }
+  #surge.collapse { transform: scaleY(0); opacity: 0; }
 
-            <!-- PHASE 2: ARCHIVE MENU GRID -->
-            <div id="menu-grid" class="hidden grid-cols-1 gap-3 max-w-xs mx-auto animate-fade-in">
-                <button class="archive-btn border border-stone-800 bg-stone-950/40 hover:bg-stone-900 hover:border-stone-500 py-3 text-xs tracking-widest text-stone-400 hover:text-white rounded transition-all cursor-pointer" data-id="2012" data-label="HIGH_SCHOOL_ID">2012 / AGE 14</button>
-                <button class="archive-btn border border-stone-800 bg-stone-950/40 hover:bg-stone-900 hover:border-stone-500 py-3 text-xs tracking-widest text-stone-400 hover:text-white rounded transition-all cursor-pointer" data-id="2016" data-label="DRIVERS_LICENSE_R_01">2016 / AGE 18</button>
-                <button class="archive-btn border border-stone-800 bg-stone-950/40 hover:bg-stone-900 hover:border-stone-500 py-3 text-xs tracking-widest text-stone-400 hover:text-white rounded transition-all cursor-pointer" data-id="2020" data-label="WORK_BADGE_SYS_04">2020 / AGE 22</button>
-            </div>
-
-            <!-- PHASE 4: ID CARD DISPLAY PANEL -->
-            <div id="id-display" class="hidden space-y-6 flex flex-col items-center">
-                <!-- Laminated ID Placeholder Card (Optimized to let your background graphics di1-3 shine through) -->
-                <div id="laminate-card" class="glare pixelated relative w-72 h-44 rounded-lg border border-stone-700/60 bg-stone-900 bg-cover bg-center shadow-2xl p-4 flex flex-col justify-between text-left overflow-hidden transition-transform duration-300">
-                    <div class="flex justify-between items-start text-[8px] text-white tracking-widest mix-blend-difference drop-shadow-md">
-                        <span id="card-header">IDENTIFICATION SPEC</span>
-                        <span id="card-year">0000</span>
-                    </div>
-                    
-                    <!-- Fallback placeholder boxes inside if an image path fails to resolve locally -->
-                    <div id="fallback-graphics" class="flex gap-3 my-2 items-center pointer-events-none transition-opacity duration-300">
-                        <div class="w-16 h-20 bg-stone-950 border border-stone-800 flex items-center justify-center text-stone-700 text-xs"><span class="opacity-20">🫥</span></div>
-                        <div class="space-y-2 flex-1">
-                            <div class="h-3 bg-stone-800/80 rounded w-3/4"></div>
-                            <div class="h-2 bg-stone-950 rounded w-5/6"></div>
-                            <div class="h-2 bg-stone-950 rounded w-1/2"></div>
-                        </div>
-                    </div>
-
-                    <div class="text-[8px] text-white font-mono flex justify-between border-t border-stone-800/60 pt-2 mix-blend-difference drop-shadow-md">
-                        <span>STATUS: EXPIRED</span>
-                        <span>[ RECORD VIEW ]</span>
-                    </div>
-                </div>
-                <button id="back-btn" class="text-[10px] tracking-[0.2em] text-stone-500 hover:text-white uppercase transition-colors cursor-pointer">[ Return to Records ]</button>
-            </div>
-
-            <!-- PHASE 5: RITUAL SIGNATURE CANVAS -->
-            <div id="signature-area" class="hidden space-y-4 flex flex-col items-center">
-                <canvas id="sig-canvas" width="300" height="100" class="border-b border-stone-700 bg-stone-950/20 cursor-crosshair touch-none"></canvas>
-                <p class="text-[9px] text-stone-600 tracking-wider">DRAW INITIALS OR SIGNATURE TO COMPLETE DEPARTURE</p>
-                <button id="submit-sig" class="hidden text-xs tracking-widest text-emerald-500 hover:text-emerald-400 uppercase cursor-pointer">[ AUTHORIZE ]</button>
-            </div>
-
-        </div>
-    </div>
-
-    <script>
-        // Data layers mapping years to image files
-        const idLibrary = {
-            "2012": { header: "STUDENT ID CARD", year: "2012", img: "di1.png" },
-            "2016": { header: "DRIVER LICENSE", year: "2016", img: "di2.png" },
-            "2020": { header: "ACCESS BADGE", year: "2020", img: "di3.png" }
-        };
-
-        let viewedRecords = new Set();
-        const mainPromptText = "Identifying subject... Select a record layer to expose:█";
-        let charIndex = 0;
-
-        // Elements
-        const mainPrompt = document.getElementById('main-prompt');
-        const systemStatus = document.getElementById('system-status');
-        const menuGrid = document.getElementById('menu-grid');
-        const idDisplay = document.getElementById('id-display');
-        const backBtn = document.getElementById('back-btn');
-        const textStream = document.getElementById('text-stream');
-        const flashOverlay = document.getElementById('flash-overlay');
-        
-        const cardContainer = document.getElementById('laminate-card');
-        const cardHeader = document.getElementById('card-header');
-        const cardYear = document.getElementById('card-year');
-        const fallbackGraphics = document.getElementById('fallback-graphics');
-
-        const signatureArea = document.getElementById('signature-area');
-        const canvas = document.getElementById('sig-canvas');
-        const submitSigBtn = document.getElementById('submit-sig');
-        const ctx = canvas.getContext('2d');
-
-        // Phase 1: Boot Up Typewriter
-        function typeBoot() {
-            if (charIndex < mainPromptText.length) {
-                let char = mainPromptText.charAt(charIndex);
-                if (char === '█') {
-                    mainPrompt.innerHTML = mainPrompt.innerHTML.replace('█', '') + '<span class="cursor bg-stone-400 text-stone-400">|</span>';
-                } else {
-                    mainPrompt.innerHTML = mainPrompt.innerHTML.replace('<span class="cursor bg-stone-400 text-stone-400">|</span>', '') + char + '<span class="cursor bg-stone-400 text-stone-400">|</span>';
-                }
-                charIndex++;
-                setTimeout(typeBoot, 40);
-            } else {
-                systemStatus.textContent = "Identity Located.";
-                menuGrid.classList.remove('hidden');
-                menuGrid.classList.add('grid');
-            }
-        }
-        window.onload = typeBoot;
-
-        // Phase 3 & 4: Menu Clicks, Text Surges, and Camera Flashes
-        document.querySelectorAll('.archive-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const id = btn.getAttribute('data-id');
-                const label = btn.getAttribute('data-label');
-                viewedRecords.add(id);
-
-                // Create side text surge cascade
-                for (let i = 0; i < 15; i++) {
-                    setTimeout(() => {
-                        const line = document.createElement('div');
-                        line.textContent = `EXPOSING_LAYER_${id}_${label}_[${Math.random().toString(16).substr(2, 5).toUpperCase()}]`;
-                        textStream.appendChild(line);
-                        if (textStream.children.length > 35) textStream.removeChild(textStream.firstChild);
-                    }, i * 20);
-                }
-
-                // Camera Flash Screen Transition
-                setTimeout(() => {
-                    flashOverlay.classList.replace('opacity-0', 'opacity-100');
-                    setTimeout(() => {
-                        flashOverlay.classList.replace('opacity-100', 'opacity-0');
-                        
-                        // Hydrate ID display fields dynamically
-                        cardHeader.textContent = idLibrary[id].header;
-                        cardYear.textContent = idLibrary[id].year;
-                        
+  /* ---------- dirt ---------- */
+  #dirt {
+    position: fixed; left: 0; right: 0; bottom: 0; height: 0;
+    background:
+      radial-gradient(circle at 20% 30%, #3a2c20 0 2px, transparent 3px) 0 0 / 23px 19px,
+      radial-gradient(circle at 70% 60%, #1f160e 0 2px, transparent 3px) 0 0 / 31px 27px,
+      radial-gradient(circle at 50% 50%, #4b392a 0 1px, transparent 2px) 0 0 / 13px 11px,
+      linear-gradient(#2a1f15, #120c07);
+    opacity: 0; transition: opacity 2.5s, height 2.5s;
+    z-index: 0;
+  }
+  #dirt.in { opacity: 1; height: 55vh; }
+  #dirt.dig { animation: dig .25s; }
+  @keyframes dig {
+    0% { transform: translate(0,0); } 25% { transform:
