@@ -42,17 +42,61 @@
 
         <!-- createing the 3D ar world, hiding the VR goggles button, and turning on the phone's webcam -->   
         <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">      
-            <!-- Links your phone's physical movement, compass, and GPS to the virtual 3D camera -->     
+            <!-- linking your phone's physical movement, compass, and GPS to the virtual 3D camera -->     
             <a-camera gps-camera rotation-reader></a-camera>       
-            <!-- Creates a 3D box (placeholder for your animal) pinned to real-world GPS coordinates -->    
+            <!-- creating a 3D box (placeholder for your animal) pinned to real-world GPS coordinates -->    
              <a-box        
                 id="pigeon" 
-                <!-- Gives this 3D object a name so JavaScript can change its color later -->       
+                <!-- giving this 3D object a name so JavaScript can change its color later -->
                 color="#FF6B6B" 
-                <!-- Sets the starting color of the box to coral red -->       
+                <!-- setting the starting color of the box to coral red -->       
                 scale="3 3 3" 
-                <!-- Makes the object 3 meters wide, 3 meters tall, and 3 meters deep -->       
+                <!-- making the object 3 meters wide, 3 meters tall, and 3 meters deep -->       
                 gps-entity-place="latitude: 40.6928; longitude: -73.9903;"> 
-                <!-- Pins the object to Washington Square Arch -->     
-            </a-box> <!-- Closes the 3D box object -->   
-        </a-scene> <!-- Closes the 3D AR world -->
+                <!-- pinn the object to brooklyn borough hall -->     
+            </a-box> <!-- close the 3D box object -->   
+        </a-scene> <!-- close the 3D AR world -->
+        
+
+        <script> <!-- Opens the JavaScript section that handles GPS math and game logic -->     
+            const targetLat = 40.6928; // storing the landmark's latitude (North/South coordinate)     
+            const targetLon = -73.9903; // storing the landmark's longitude (East/West coordinate)     
+            const triggerDistanceMeters = 25; // setting how close (in meters) you must walk to unlock the history      
+            // 
+            // defining a math function (Haversine formula) to measure distance between two GPS points     
+            function getDistance(lat1, lon1, lat2, lon2) {        
+                const R = 6371e3; // storing the Earth's radius in meters (6,371,000 meters)       
+                const p1 = lat1 * Math.PI / 180; // converting your latitude from degrees into radians for math       
+                const p2 = lat2 * Math.PI / 180; // convetting the landmark's latitude into radians       
+                const dp = (lat2 - lat1) * Math.PI / 180; // calculating the North/South difference in radians       
+                const dl = (lon2 - lon1) * Math.PI / 180; // calculating the East/West difference in radians       
+                // 
+                // calculating the curved distance across the Earth's surface (part 1)       
+                const a = Math.sin(dp/2) * Math.sin(dp/2) + 
+                Math.cos(p1) * Math.cos(p2) * Math.sin(dl/2) * Math.sin(dl/2); // (part 2)       
+                
+                return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))); // Returns the final distance in meters     
+            } // close the distance math function      
+            // 
+            // tracks phone's GPS location as you walk around     
+            navigator.geolocation.watchPosition((position) => {        
+                const userLat = position.coords.latitude; // grab current live latitude from the phone       
+                const userLon = position.coords.longitude; // grab current live longitude from the phone       
+                // 
+                
+                // calculating how many meters away you are from the landmark and rounds to a whole number      
+                const distance = Math.round(getDistance(userLat, userLon, targetLat, targetLon));         
+                // updating the text on screen to show your live distance to the landmark       
+                document.getElementById('status').innerText = `Distance to landmark: ${distance}m`;         
+                // checking if you have walked inside the 25-meter trigger zone       
+                if (distance <= triggerDistanceMeters) {          
+                    document.getElementById('history-card').style.display = 'block'; // Reveals the hidden historical fact card         
+                    document.getElementById('avatar').setAttribute('color', '#4ECDC4'); // Changes the 3D box color to teal as a reward       
+                } // closing the "if close enough" check     
+            }, (err) => { // running this backup code if the phone blocks or loses the GPS signal       
+            // // displaying an error message telling the player to turn on location permissions       
+                document.getElementById('status').innerText = "GPS Error: Enable location permissions.";      
+            }, { enableHighAccuracy: true }); // telling the phone to use its most accurate GPS chip instead of rough Wi-Fi estimates   
+        </script> <!-- close the JavaScript logic section --> 
+    </body> <!-- close the visible webpage body --> 
+</html> <!-- close the entire HTML document -->
