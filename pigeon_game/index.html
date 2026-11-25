@@ -1,0 +1,19 @@
+<!DOCTYPE html> 
+<html> 
+<head>   
+    <meta charset="utf-8" />   
+    <title>Downtown Brooklyn AR History Walk</title>
+    <!-- loading A-Frame and AR.js Location-Based libraries -->
+    <script src="https://aframe.io"></script>  <!-- Loads the A-Frame 3D engine over the internet -->
+    <script src="https://githack.com"></script>   <!-- Loads the AR.js library so A-Frame can use your phone's camera and GPS -->
+    <style>
+        body { margin: 0; overflow: hidden; font-family: sans-serif; }
+        #ui-overlay {
+        position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+        width: 85%; background: rgba(0, 0, 0, 0.8); color: white;
+        padding: 15px; border-radius: 12px; z-index: 999; text-align: center;
+        }
+        #history-card { display: none; margin-top: 10px; border-top: 1px solid #555; padding-top: 10px; }
+    </style>
+    </head>
+    <body>
