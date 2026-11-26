@@ -47,18 +47,19 @@
         <!-- createing the 3D ar world, hiding the VR goggles button, and turning on the phone's webcam -->   
         <a-scene vr-mode-ui="enabled: false" arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;">      
             <!-- linking your phone's physical movement, compass, and GPS to the virtual 3D camera -->     
-            <a-camera gps-camera rotation-reader></a-camera>       
+            <a-camera gps-camera rotation-reader>       
             <!-- creating a 3D box (placeholder for your animal) pinned to real-world GPS coordinates -->    
-             <a-box        
-                id="pigeon" 
-                <!-- giving this 3D object a name so JavaScript can change its color later -->
-                color="#FF6B6B" 
-                <!-- setting the starting color of the box to coral red -->       
-                scale="3 3 3" 
-                <!-- making the object 3 meters wide, 3 meters tall, and 3 meters deep -->       
-                <!-- gps-entity-place="latitude: 40.6928; longitude: -73.9903;"> -->
-                <!-- pinn the object to brooklyn borough hall -->     
-            </a-box> <!-- close the 3D box object -->   
+                <a-box        
+                    id="pigeon" 
+                    <!-- giving this 3D object a name so JavaScript can change its color later -->
+                    color="#FF6B6B" 
+                    <!-- setting the starting color of the box to coral red -->       
+                    scale="3 3 3" 
+                    <!-- making the object 3 meters wide, 3 meters tall, and 3 meters deep -->       
+                    <!-- gps-entity-place="latitude: 40.6928; longitude: -73.9903;"> -->
+                    <!-- pinn the object to brooklyn borough hall -->     
+                </a-box> <!-- close the 3D box object -->   
+            </a-camera>
         </a-scene> <!-- close the 3D AR world -->
         
 
